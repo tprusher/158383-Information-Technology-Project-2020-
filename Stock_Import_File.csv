@@ -1,0 +1,5 @@
+﻿ItemID,Name,Price,ShelfLife,OrderFrequency,SupplierID,SupplierSKU,SOH,LastUpdated,MinSOH,MaxSOH,MOQ
+1,Cheese,478,12,7,1,704472,12,24/08/20 20:47,12,28,7
+2,Milk,152,5,14,7,230402,21,24/08/20 20:47,18,25,6
+3,Bread,870,10,21,33,668530,25,24/08/20 20:47,10,30,6
+4,Ice Cream,3,13,28,6,598047,19,24/08/20 20:47,18,24,6
