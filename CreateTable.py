@@ -21,18 +21,19 @@ cur = connection.cursor()
 def create_table(TableName):
     supplier_schema = """ 
     CREATE TABLE supplier (
-        SupplierID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        SupplierID INT(6) AUTO_INCREMENT,
         CompanyName VARCHAR(340) NOT NULL,
         ContactPerson VARCHAR(30) NOT NULL,
         Email VARCHAR(50),
-        Phone VARCHAR(50)
+        Phone VARCHAR(50),
+        PRIMARY KEY (SupplierID)
         );
     """
 
     # ItemID,Name,Price,ShelfLife,OrderFrequency,SupplierID,SupplierSKU,SOH,LastUpdated,MinSOH,MaxSOH,MOQ
     stock_schema = """ 
     CREATE TABLE stock (
-        ItemID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+        ItemID INT(6) UNSIGNED AUTO_INCREMENT , 
         Name VARCHAR(30) NOT NULL,
         Price FLOAT NOT NULL, 
         ShelfLife INT(3),
@@ -43,7 +44,13 @@ def create_table(TableName):
         LastUpdated TIMESTAMP,
         MinSOH INT(5),
         MaxSOH INT(5),
-        MOQ INT(5)
+        MOQ INT(5),
+        PRIMARY KEY (ItemID),
+
+        CONSTRAINT fk_stockSupplier
+        FOREIGN KEY (SupplierID) 
+        REFERENCES supplier(SupplierID)
+
 
         );
     """
@@ -57,15 +64,14 @@ def create_table(TableName):
         Total FLOAT,
         Status VARCHAR(40),
 
-        PRIMARY KEY (OrderID),
-        CONSTRAINT fk_order_supplier
+        PRIMARY KEY orders(OrderID),
+
+        CONSTRAINT fk_orderSupplier
         FOREIGN KEY (SupplierID) 
         REFERENCES supplier(SupplierID)
 
         );
     """
-
-
     if TableName.lower() == 'stock':
         cur.execute(stock_schema)
     elif TableName.lower() == 'supplier':
@@ -74,7 +80,7 @@ def create_table(TableName):
         cur.execute(order_schema)
 
     connection.commit()
-    print('<< CREATED TABLE >> %s \n<< END >>'%(TableName))
+    print('<< CREATED TABLE >> %s << END >>'%(TableName))
 
 
 
@@ -82,7 +88,13 @@ def drop_table(TableName):
     sql = """drop table %s;"""%(TableName)
     cur.execute(sql)
     connection.commit()
-    print('<< DROPPED TABLE >>\n\t %s \n<< END >>'%(TableName))
+    print('<< DROPPED TABLE >> %s << END >>'%(TableName))
 
 
-create_table('order')
+#drop_table('supplier')
+#drop_table('stock')
+#drop_table('orders')
+
+create_table('supplier')
+create_table('stock')
+create_table('orders')

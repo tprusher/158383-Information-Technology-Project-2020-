@@ -18,10 +18,7 @@ connection = pymysql.connect(
     database = "MainDB"
 )
 
-
 cur = connection.cursor()
-
-
 
 def insert_stock_data(): 
     csvFile = pd.read_csv('Stock_Import_File.csv') 
