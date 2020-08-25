@@ -1,79 +1,27 @@
 
-
-
-"""
- Goal is to: 
- 
- 1. Create a function which creates the schema for the tables we will store the data in. 
- 2. Create a function to insert data/rows into this table
-
-"""
-
 import pymysql
 import pandas as pd
 
+# connection = pymysql.connect(
+#     host = 'autostockordering.co7conkey36s.us-east-1.rds.amazonaws.com',
+#     port = 3306,
+#     user = 'adminTom',
+#     password = 'XXHnW0lpK1jKaDujJaQA',
+#     database = "Supplier"
+# )
+
 connection = pymysql.connect(
-    host = 'autostockordering.co7conkey36s.us-east-1.rds.amazonaws.com',
+    host = 'autostockordering.cwhehy370roy.ap-southeast-2.rds.amazonaws.com',
     port = 3306,
-    user = 'adminTom',
-    password = 'XXHnW0lpK1jKaDujJaQA',
-    database = "Supplier"
+    user = 'admin_Tom',
+    password = 'TM1ZtaKUOw9EHthjUEYt',
+    database = "MainDB"
 )
+
 
 cur = connection.cursor()
 
-def create_table(TableName):
-    supplier_schema = """ 
-    CREATE TABLE supplier (
-        SupplierID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        CompanyName VARCHAR(340) NOT NULL,
-        ContactPerson VARCHAR(30) NOT NULL,
-        Email VARCHAR(50),
-        Phone VARCHAR(50)
-        );
-    """
-    # ItemID,Name,Price,ShelfLife,OrderFrequency,SupplierID,SupplierSKU,SOH,LastUpdated,MinSOH,MaxSOH,MOQ
-    stock_schema = """ 
-    CREATE TABLE stock (
-        ItemID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-        Name VARCHAR(30) NOT NULL,
-        Price FLOAT NOT NULL, 
-        ShelfLife INT(3),
-        OrderFrequency INT(3),
-        SupplierID INT(10),
-        SupplierSKU INT(10),
-        SOH INT(5),
-        LastUpdated TIMESTAMP,
-        MinSOH INT(5),
-        MaxSOH INT(5),
-        MOQ INT(5)
-        );
-    """
-    if TableName.lower() == 'stock':
-        cur.execute(stock_schema)
-    elif TableName.lower() == 'supplier':
-        cur.execute(supplier_schema)
 
-    connection.commit()
-    print('<< CREATED TABLE >>\n\t %s \n<< END >>'%(TableName))
-
-    #insert_data()
-
-def drop_table(TableName):
-    sql = """drop table %s;"""%(TableName)
-    cur.execute(sql)
-    connection.commit()
-    print('<< DROPPED TABLE >>\n\t %s \n<< END >>'%(TableName))
-
-
-def insert_supplier_data():
-    schema = """
-        INSERT INTO supplier (CompanyName, ContactPerson, Email, Phone)
-        VALUES ('Test Company 3', 'Company Admin 3', 'test3@Company.co.nz','09 123 45 90');
-    """
-    cur.execute(schema)
-    connection.commit()
-    print('<< DATA INSERTED >>')
 
 def insert_stock_data(): 
     csvFile = pd.read_csv('Stock_Import_File.csv') 
@@ -132,22 +80,13 @@ def products_in_stock(supplierID):
 
     return my_list
 
-def get_data():
-    sql = """select * from stock;"""
-    print("<< RUNNING SQL:\n%s\n>>"%(sql))
-    table_data = pd.read_sql(sql, con=connection)   
-
-    print("<< TABLE DATA >>")
-    print(table_data)
-
-drop_table('stock')
-create_table('stock')
+def insert_supplier_data():
+    schema = """
+        INSERT INTO supplier (CompanyName, ContactPerson, Email, Phone)
+        VALUES ('Test Company 3', 'Company Admin 3', 'test3@Company.co.nz','09 123 45 90');
+    """
+    cur.execute(schema)
+    connection.commit()
+    print('<< DATA INSERTED >>')
 
 insert_stock_data()
-
-
-get_data()
-
-# products_in_stock()
-
-
