@@ -25,7 +25,7 @@ cur = connection.cursor()
 def create_table(TableName):
     supplier_schema = """ 
     CREATE TABLE supplier (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        SupplierID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         CompanyName VARCHAR(340) NOT NULL,
         ContactPerson VARCHAR(30) NOT NULL,
         Email VARCHAR(50),
@@ -82,15 +82,55 @@ def insert_stock_data():
     for index, row in csvFile.iterrows():
        # print((row['Name'], row['Price'],row['ShelfLife'],row['OrderFrequency'],row['SupplierID'],row['SupplierSKU'],row['SOH'], row['MinSOH'],row['MaxSOH'],row['MOQ']))
 
-        sql = """ INSERT INTO stock (Name,Price,ShelfLife,OrderFrequency,SupplierID,SupplierSKU,SOH,LastUpdated,MinSOH,MaxSOH,MOQ)
+        insert_sql = """ INSERT INTO stock (Name,Price,ShelfLife,OrderFrequency,SupplierID,SupplierSKU,SOH,LastUpdated,MinSOH,MaxSOH,MOQ)
                           VALUES ('%s', %s, %s, %s, %s, %s, %s, current_timestamp(), %s, %s , %s);
                       """%(row['Name'], row['Price'],row['ShelfLife'],row['OrderFrequency'],row['SupplierID'],row['SupplierSKU'],row['SOH'], row['MinSOH'],row['MaxSOH'],row['MOQ'])
-        
-     
+      
+        update_sql = """ UPDATE stock 
+                       SET 
+                            Name = '%s',
+                            Price = %s,
+                            ShelfLife = %s,
+                            OrderFrequency = %s,
+                            SOH = %s,
+                            LastUpdated = current_timestamp(),
+                            MinSOH = %s,
+                            MaxSOH = %s,
+                            MOQ = %s
+
+                       Where
+                        SupplierSKU = %s
+                        and SupplierID = %s
+                        ; 
+                      """%(row['Name'], row['Price'],row['ShelfLife'],row['OrderFrequency'],row['SOH'],row['MinSOH'],row['MaxSOH'],row['MOQ'],row['SupplierSKU'], row['SupplierID'])
+          
+        product_list = products_in_stock(row['SupplierID'])
+
+        if row['SupplierSKU'] in product_list:
+            print('SKU', row['SupplierSKU'], 'LIST:', product_list) 
+            sql = update_sql
+        else: 
+            sql = insert_sql
+
         print('Running NOW >>', sql)
+
         cur.execute(sql)
         connection.commit()
-        
+
+def products_in_stock(supplierID): 
+    unique_productKeys = """ Select distinct SupplierSKU from stock s where s.SupplierID = '%s';"""%(supplierID)
+    print("<< RUNNING SQL:\n%s\n>>"%(unique_productKeys))
+
+    table_data = pd.read_sql(unique_productKeys, con=connection)   
+
+    print("<< TABLE DATA >>")
+    #print(table_data)
+    my_list = []
+
+    for index, row in table_data.iterrows():
+        my_list.append(row['SupplierSKU'])
+
+    return my_list
 
 def get_data():
     sql = """select * from stock;"""
@@ -100,13 +140,14 @@ def get_data():
     print("<< TABLE DATA >>")
     print(table_data)
 
-
-
-
 drop_table('stock')
 create_table('stock')
+
 insert_stock_data()
+
+
 get_data()
 
+# products_in_stock()
 
 
