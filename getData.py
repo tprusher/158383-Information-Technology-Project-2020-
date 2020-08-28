@@ -1,4 +1,5 @@
 import pymysql
+import openpyxl
 import pandas as pd
 
 # connection = pymysql.connect(
@@ -24,10 +25,14 @@ def get_data(TableName):
     sql = """select * from %s;"""%(TableName)
     print("<< RUNNING SQL:\n%s\n>>"%(sql))
     table_data = pd.read_sql(sql, con=connection)   
-
+    write_to_excel(table_data)
     print("<< TABLE DATA >>")
     print(table_data)
 
+
+
+def write_to_excel(dataSet): 
+    dataSet.to_excel (r'/Users/tprusher/Documents/Coding/158383-Information-Technology-Project-2020-/DataSet.xlsx', index = False, header=True)
 
 
 get_data('supplier')
