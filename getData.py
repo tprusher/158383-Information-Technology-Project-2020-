@@ -19,8 +19,9 @@ connection = pymysql.connect(
 
 
 cur = connection.cursor()
-def get_data():
-    sql = """select * from supplier;"""
+
+def get_data(TableName):
+    sql = """select * from %s;"""%(TableName)
     print("<< RUNNING SQL:\n%s\n>>"%(sql))
     table_data = pd.read_sql(sql, con=connection)   
 
@@ -29,4 +30,4 @@ def get_data():
 
 
 
-get_data()
+get_data('supplier')

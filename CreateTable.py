@@ -33,7 +33,7 @@ def create_table(TableName):
     # ItemID,Name,Price,ShelfLife,OrderFrequency,SupplierID,SupplierSKU,SOH,LastUpdated,MinSOH,MaxSOH,MOQ
     stock_schema = """ 
     CREATE TABLE stock (
-        ItemID INT(6) UNSIGNED AUTO_INCREMENT , 
+        ItemID INT(6) AUTO_INCREMENT , 
         Name VARCHAR(30) NOT NULL,
         Price FLOAT NOT NULL, 
         ShelfLife INT(3),
@@ -68,7 +68,11 @@ def create_table(TableName):
 
         CONSTRAINT fk_orderSupplier
         FOREIGN KEY (SupplierID) 
-        REFERENCES supplier(SupplierID)
+        REFERENCES supplier(SupplierID),
+
+        CONSTRAINT fk_orderItem
+        FOREIGN KEY (ItemID) 
+        REFERENCES stock(ItemID)
 
         );
     """
@@ -95,6 +99,6 @@ def drop_table(TableName):
 #drop_table('stock')
 #drop_table('orders')
 
-create_table('supplier')
-create_table('stock')
-create_table('orders')
+#create_table('supplier')
+# create_table('stock')
+#create_table('order')

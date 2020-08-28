@@ -77,13 +77,68 @@ def products_in_stock(supplierID):
 
     return my_list
 
-def insert_supplier_data():
-    schema = """
-        INSERT INTO supplier (CompanyName, ContactPerson, Email, Phone)
-        VALUES ('Test Company 3', 'Company Admin 3', 'test3@Company.co.nz','09 123 45 90');
-    """
-    cur.execute(schema)
-    connection.commit()
-    print('<< DATA INSERTED >>')
 
-insert_stock_data()
+
+
+def insert_supplier_data():
+    csvFile = pd.read_csv('Supplier_Import_File.csv') 
+
+    table_data = pd.read_sql("""select distinct CompanyName from supplier;""", con=connection)
+
+    supplier_list = []
+    
+    for index, row in table_data.iterrows():
+        supplier_list.append(row['CompanyName'])
+
+    print(supplier_list)
+
+    for index, row in csvFile.iterrows():
+        insert_schema = """
+            INSERT INTO supplier (CompanyName, ContactPerson, Email, Phone)
+            VALUES ('%s', '%s', '%s','%s');
+            """%(row['CompanyName'], row['ContactPerson'], row['Email'], row['Phone'])
+
+        update_schema = """
+            UPDATE supplier 
+                CompanyName = %s,
+                ContactPerson = %s, 
+                Email = %s, 
+                Phone = %s
+            WHERE
+                CompanyName = %s  
+            ;
+            """%(row['CompanyName'], row['ContactPerson'], row['Email'], row['Phone'], row['CompanyName'])
+
+        if row['CompanyName'] in supplier_list:
+            print('SKU', row['SupplierSKU'], 'LIST:', supplier_list) 
+            sql = update_schema
+            print(sql)
+        elif row['CompanyName'] == 'nan':
+            pass
+        else: 
+            sql = insert_schema
+            print(sql)
+        
+        cur.execute(sql)
+        connection.commit()
+        #print('<< DATA INSERTED >>')
+
+
+def delete_data(TableName):
+    sql = 'Delete from %s where 1=1;'%(TableName)
+    cur.execute(sql)
+    connection.commit()  
+    query = 'Select * from %s'%(TableName)
+    table_data = pd.read_sql(query, con=connection)
+    cur.execute(query)
+    connection.commit()
+    print(table_data)
+
+
+delete_data('supplier')
+
+insert_supplier_data()
+
+
+
+ 
