@@ -30,9 +30,9 @@ def get_data(TableName):
     print(table_data)
 
 
-
 def write_to_excel(dataSet): 
-    dataSet.to_excel (r'/Users/tprusher/Documents/Coding/158383-Information-Technology-Project-2020-/DataSet.xlsx', index = False, header=True)
+    dataSet.to_excel (r'/Users/tprusher/Documents/Coding/158383-Information-Technology-Project-2020-/DataSet.xlsx',
+     index = False, header=True, sheet_name='Tom_Data_Export')
 
 
 get_data('supplier')

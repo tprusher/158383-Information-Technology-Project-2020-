@@ -135,7 +135,7 @@ def delete_data(TableName):
     print(table_data)
 
 
-delete_data('supplier')
+#delete_data('supplier')
 
 insert_supplier_data()
 
