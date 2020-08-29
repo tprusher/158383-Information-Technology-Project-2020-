@@ -62,7 +62,8 @@ def get_data():
         date_time = datetime.now().strftime("%d/%m/%y %H:%M")
 
         pdf_file_name = '%s Order'%(z[0])
-        pdf_header = """<h2> %s Order</h2>"""%(z[0])
+        pdf_header = """<h2> %s Order</h2>      
+        """%(z[0])
         footer_details = """ <p id='footer_notes'>
             Order Generated: %s<br>
             Order For: [CLIENT COMPANY NAME] <br>
@@ -70,7 +71,9 @@ def get_data():
             Services provided by Group 1​ (Codie Springer 13067864,  Kate Robbie 93014642,Thomas Prusher 15131284, Mi Jin Park 19029015​)
             </p>
             """%(date_time)
+        to_portal = """<a href="https://www.google.com/" class="accept_button"> ACCEPT </a> <a href="https://www.google.com/" class="edit_button"> EDIT </a> """
         
+
         css_style = """
         <style> 
         h2 { 
@@ -145,12 +148,41 @@ def get_data():
                 color: #DCDCDC;
                 font-style: italic;
              }
+            
+            .accept_button {
+                background-color: #4CAF50;;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 12px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 25px;
+                }
+
+            .edit_button {
+                            background-color:  	#FF7F50;
+                            border: none;
+                            color: white;
+                            padding: 15px 32px;
+                            text-align: center;
+                            text-decoration: none;
+                            display: inline-block;
+                            font-size: 12px;
+                            margin: 4px 2px;
+                            cursor: pointer;
+                            border-radius: 25px;
+                            }
+
             </style> 
         """
 
         pdf_table = table_data.to_html()
         
-        pdf_data = pdf_header + pdf_table + css_style + footer_details
+        pdf_data = pdf_header + pdf_table + to_portal + css_style + footer_details
         
 
         # Create a html ouput.
