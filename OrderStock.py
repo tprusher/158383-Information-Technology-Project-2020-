@@ -33,17 +33,20 @@ def get_data():
             select 
                 st.supplierid as supplierid,
                 su.CompanyName as CompanyName,
-                st.ItemID as ItemID,
+                st.SupplierSKU,
+                -- st.ItemID as ItemID,
                 st.Name,
                 st.Price,
-                st.ShelfLife,
-                st.OrderFrequency,
-                st.SupplierSKU,
+                -- st.ShelfLife,
+                -- st.OrderFrequency,
+                
                 st.SOH,
-                st.LastUpdated,
-                st.MinSOH,
-                st.MaxSOH,
-                st.MOQ    
+                -- st.LastUpdated,
+                 st.MinSOH,
+                 st.MaxSOH,
+                 st.MOQ, 
+                case when (st.MinSOH - st.SOH) >= st.MOQ then (st.MinSOH - st.SOH) else (st.MaxSOH - st.SOH) end OrderQty
+
         
             from 
                 stock st
@@ -52,19 +55,9 @@ def get_data():
             where SOH <= MinSOH and st.supplierId = %s;"""%(supplier_filter)
         table_data = pd.read_sql(sql, con=connection)   
         
-        z = (table_data.CompanyName.unique())
-        print(table_data)   
-        
+        z = (table_data.CompanyName.unique()) 
         
         table_data.to_excel ('/Users/tprusher/Documents/Coding/158383-Information-Technology-Project-2020-/'+'%s.xlsx'%(z[0]),
-                    index = False, header=True, sheet_name='Sheet1')
-
-        print('NEW SUPPLIER BREAK')
-
-        # ItemID,Name,Price,ShelfLife,OrderFrequency,SupplierID,SupplierSKU,SOH,LastUpdated,MinSOH,MaxSOH,MOQ
-       # for index, row in table_data.iterrows():
-            #print('RAISE ORDER |', row['ItemID'], row['Name'], row['SOH'], row['MinSOH'])
-            
-       # print( row['CompanyName'],row['ItemID'], row['Name'],  row['SupplierSKU'], row['SOH'], row['MinSOH'], row['MaxSOH'], row['MOQ'])
+                    index = False, header=True, sheet_name='%s'%(z[0]))
 
 get_data()
