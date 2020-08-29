@@ -193,7 +193,7 @@ def get_data():
         # Create the pdf 
         my_pdf_output = w.HTML("%s.html"%(pdf_file_name)).write_pdf("%s.pdf"%(pdf_file_name))
         
-        print("** Finished **")
+        print("** Finished : %s.html **"%(pdf_file_name))
 
         # Create and excel output;
 
