@@ -62,8 +62,13 @@ def get_data():
         date_time = datetime.now().strftime("%d/%m/%y %H:%M:%S")
 
         pdf_file_name = '%s Order'%(z[0])
-        pdf_header = """<h2> %s Order</h2><h3>Generated: %s</h3>"""%(z[0], date_time)
-
+        pdf_header = """<h2> %s Order</h2><h3 id='footer_notes'>Generated: %s</h3>"""%(z[0], date_time)
+        authors = """  <p id='footer_notes'> <b> Services provided by Group 1​ </b> 
+            (Codie Springer 13067864,  Kate Robbie 93014642, ​
+            Thomas Prusher 15131284, Mi Jin Park 19029015​)
+            </p>
+            """
+        
         css_style = """
         <style> 
         h2 { 
@@ -131,12 +136,17 @@ def get_data():
             padding: 2px 8px;
             border-radius: 5px;
             }
+
+            #footer_notes {
+                color: #DCDCDC;
+                font-style: italic;
+             }
             </style> 
         """
 
         pdf_table = table_data.to_html()
         
-        pdf_data = pdf_header + pdf_table + css_style
+        pdf_data = pdf_header + pdf_table + css_style + authors
         
 
         # Create a html ouput.
