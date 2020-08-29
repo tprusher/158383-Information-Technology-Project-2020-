@@ -83,6 +83,7 @@ def get_data():
             table.dataframe  td, table.dataframe  th {
             border: 1px solid #AAAAAA;
             padding: 3px 2px;
+            text-align: center;
             }
             table.dataframe  tbody td {
             font-size: 13px;
