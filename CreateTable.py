@@ -10,12 +10,13 @@ import pandas as pd
 # )
 
 connection = pymysql.connect(
-    host = 'autostockordering.cwhehy370roy.ap-southeast-2.rds.amazonaws.com',
+    host = 'autostockordering.cpgtqfncbzrl.us-east-1.rds.amazonaws.com',
     port = 3306,
     user = 'admin_Tom',
-    password = 'TM1ZtaKUOw9EHthjUEYt',
+    password = 'q2vGUCYoA1PgDS9EFd5L',
     database = "MainDB"
 )
+
 cur = connection.cursor()
 
 def create_table(TableName):
@@ -99,6 +100,6 @@ def drop_table(TableName):
 #drop_table('stock')
 #drop_table('orders')
 
-#create_table('supplier')
-# create_table('stock')
-#create_table('order')
+create_table('supplier')
+create_table('stock')
+create_table('order')

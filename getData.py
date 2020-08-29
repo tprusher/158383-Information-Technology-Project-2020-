@@ -11,21 +11,22 @@ import pandas as pd
 # )
 
 connection = pymysql.connect(
-    host = 'autostockordering.cwhehy370roy.ap-southeast-2.rds.amazonaws.com',
+    host = 'autostockordering.cpgtqfncbzrl.us-east-1.rds.amazonaws.com',
     port = 3306,
     user = 'admin_Tom',
-    password = 'TM1ZtaKUOw9EHthjUEYt',
+    password = 'q2vGUCYoA1PgDS9EFd5L',
     database = "MainDB"
 )
-
 
 cur = connection.cursor()
 
 def get_data(TableName):
     sql = """select * from %s;"""%(TableName)
     print("<< RUNNING SQL:\n%s\n>>"%(sql))
+
     table_data = pd.read_sql(sql, con=connection)   
     write_to_excel(table_data)
+
     print("<< TABLE DATA >>")
     print(table_data)
 
@@ -35,4 +36,4 @@ def write_to_excel(dataSet):
      index = False, header=True, sheet_name='Tom_Data_Export')
 
 
-get_data('supplier')
+get_data('stock')

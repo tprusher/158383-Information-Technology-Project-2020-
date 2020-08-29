@@ -11,10 +11,10 @@ import pandas as pd
 # )
 
 connection = pymysql.connect(
-    host = 'autostockordering.cwhehy370roy.ap-southeast-2.rds.amazonaws.com',
+    host = 'autostockordering.cpgtqfncbzrl.us-east-1.rds.amazonaws.com',
     port = 3306,
     user = 'admin_Tom',
-    password = 'TM1ZtaKUOw9EHthjUEYt',
+    password = 'q2vGUCYoA1PgDS9EFd5L',
     database = "MainDB"
 )
 
@@ -137,8 +137,8 @@ def delete_data(TableName):
 
 #delete_data('supplier')
 
-insert_supplier_data()
-
+#insert_supplier_data()
+insert_stock_data()
 
 
  
