@@ -59,20 +59,22 @@ def get_data():
         table_data = pd.read_sql(sql, con=connection)   
         
         z = (table_data.CompanyName.unique()) 
-        date_time = datetime.now().strftime("%d/%m/%y %H:%M:%S")
+        date_time = datetime.now().strftime("%d/%m/%y %H:%M")
 
         pdf_file_name = '%s Order'%(z[0])
-        pdf_header = """<h2> %s Order</h2><h3 id='footer_notes'>Generated: %s</h3>"""%(z[0], date_time)
-        authors = """  <p id='footer_notes'> <b> Services provided by Group 1​ </b> 
-            (Codie Springer 13067864,  Kate Robbie 93014642, ​
-            Thomas Prusher 15131284, Mi Jin Park 19029015​)
+        pdf_header = """<h2> %s Order</h2>"""%(z[0])
+        footer_details = """ <p id='footer_notes'>
+            Order Generated: %s<br>
+            Order For: [CLIENT COMPANY NAME] <br>
+            Contact #: [CLIENT CONTACT #] <br>
+            Services provided by Group 1​ (Codie Springer 13067864,  Kate Robbie 93014642,Thomas Prusher 15131284, Mi Jin Park 19029015​)
             </p>
-            """
+            """%(date_time)
         
         css_style = """
         <style> 
         h2 { 
-            color: blue;
+            color: 0099FF;
         }
         h3 {
             color: black;
@@ -86,12 +88,13 @@ def get_data():
             border-collapse: collapse;
             }
             table.dataframe  td, table.dataframe  th {
-            border: 1px solid #AAAAAA;
+            border: 0.5px solid  	#D3D3D3;
             padding: 3px 2px;
             text-align: center;
             }
             table.dataframe  tbody td {
-            font-size: 13px;
+            font-size: 12px;
+            font-weight: bold;
             }
             table.dataframe  tr:nth-child(even) {
             background: #D0E4F5;
@@ -101,13 +104,14 @@ def get_data():
             background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
             background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
             background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-            border-bottom: 2px solid #444444;
+            border-bottom: 1px solid #444444;
+            bottom-padding: 1px; 
             }
             table.dataframe  thead th {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
             color: #FFFFFF;
-            border-left: 2px solid #D0E4F5;
+            border-left: 1px solid #444444;
             }
             table.dataframe  thead th:first-child {
             border-left: none;
@@ -146,7 +150,7 @@ def get_data():
 
         pdf_table = table_data.to_html()
         
-        pdf_data = pdf_header + pdf_table + css_style + authors
+        pdf_data = pdf_header + pdf_table + css_style + footer_details
         
 
         # Create a html ouput.
