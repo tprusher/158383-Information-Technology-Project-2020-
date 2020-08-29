@@ -9,6 +9,9 @@ Goal:
 
 import pymysql
 import pandas as pd
+import pdfkit as pdf
+from datetime import datetime
+import weasyprint as w
 
 connection = pymysql.connect(
     host = 'autostockordering.cpgtqfncbzrl.us-east-1.rds.amazonaws.com',
@@ -56,8 +59,106 @@ def get_data():
         table_data = pd.read_sql(sql, con=connection)   
         
         z = (table_data.CompanyName.unique()) 
+        date_time = datetime.now().strftime("%d/%m/%y %H:%M:%S")
+
+        pdf_file_name = '%s Order'%(z[0])
+        pdf_header = """<h2> %s Order</h2><h3>Generated: %s</h3>"""%(z[0], date_time)
+
+        css_style = """
+        <style> 
+        h2 { 
+            color: blue;
+        }
+        h3 {
+            color: black;
+        }
+        table.dataframe {
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 100%;
+            
+            text-align: center;
+            border-collapse: collapse;
+            }
+            table.dataframe  td, table.dataframe  th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+            }
+            table.dataframe  tbody td {
+            font-size: 13px;
+            }
+            table.dataframe  tr:nth-child(even) {
+            background: #D0E4F5;
+            }
+           table.dataframe  thead {
+            background: #1C6EA4;
+            background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            border-bottom: 2px solid #444444;
+            }
+            table.dataframe  thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            border-left: 2px solid #D0E4F5;
+            }
+            table.dataframe  thead th:first-child {
+            border-left: none;
+            }
+
+            table.dataframe  tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #D0E4F5;
+            background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            border-top: 2px solid #444444;
+            }
+            table.dataframe  tfoot td {
+            font-size: 14px;
+            }
+            table.dataframe  tfoot .links {
+            text-align: right;
+            }
+            table.dataframe  tfoot .links a{
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+            }
+            </style> 
+        """
+
+        pdf_table = table_data.to_html()
         
-        table_data.to_excel ('/Users/tprusher/Documents/Coding/158383-Information-Technology-Project-2020-/'+'%s.xlsx'%(z[0]),
-                    index = False, header=True, sheet_name='%s'%(z[0]))
+        pdf_data = pdf_header + pdf_table + css_style
+        
+
+        # Create a html ouput.
+        po_html = open("%s.html"%(pdf_file_name), "w")
+        po_html.write(pdf_data)
+        po_html.close()
+
+        # Create the pdf 
+        my_pdf_output = w.HTML("%s.html"%(pdf_file_name)).write_pdf("%s.pdf"%(pdf_file_name))
+        
+        print("** Finished **")
+
+        # Create and excel output;
+
+        # try:
+        #     table_data.to_excel ('/Users/tprusher/Documents/Coding/158383-Information-Technology-Project-2020-/'+'%s.xlsx'%(z[0]),
+        #             index = False, header=True, sheet_name='%s'%(z[0]))
+        #     print('Created File >>')
+        # except: 
+        #     print('Failed to Create File >>')
+
+
+
+
 
 get_data()
