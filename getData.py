@@ -36,4 +36,4 @@ def write_to_excel(dataSet):
      index = False, header=True, sheet_name='Tom_Data_Export')
 
 
-get_data('stock')
+get_data('order_detail')

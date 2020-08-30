@@ -56,16 +56,27 @@ def create_table(TableName):
         );
     """
 
-    order_schema = """ 
-    CREATE TABLE orders (
-        OrderID INT(6) UNSIGNED AUTO_INCREMENT,
+    order_header = """
+        CREATE TABLE order_header (
+            OrderID INT(6) AUTO_INCREMENT,
+            DateCreated TIMESTAMP,
+            Status VarChar(20),
+            
+            PRIMARY KEY order_header(OrderID)
+        );
+        """
+
+    order_detail = """ 
+    CREATE TABLE order_detail (
+        OrderLineUUID int(6) AUTO_INCREMENT, 
+        OrderID INT(6), 
         Date TIMESTAMP,
         SupplierID INT(6),
         ItemID INT(6),
         Total FLOAT,
         Status VARCHAR(40),
 
-        PRIMARY KEY orders(OrderID),
+        PRIMARY KEY orders(OrderLineUUID),
 
         CONSTRAINT fk_orderSupplier
         FOREIGN KEY (SupplierID) 
@@ -73,16 +84,24 @@ def create_table(TableName):
 
         CONSTRAINT fk_orderItem
         FOREIGN KEY (ItemID) 
-        REFERENCES stock(ItemID)
+        REFERENCES stock(ItemID),
+
+        CONSTRAINT fk_orderHeader
+        FOREIGN KEY (OrderID) 
+        REFERENCES order_header(OrderID)
 
         );
     """
+
+
     if TableName.lower() == 'stock':
         cur.execute(stock_schema)
     elif TableName.lower() == 'supplier':
         cur.execute(supplier_schema)
-    elif TableName.lower() == 'order':
-        cur.execute(order_schema)
+    elif TableName.lower() == 'order_detail':
+        cur.execute(order_detail)
+    elif TableName.lower() == 'order_header':
+        cur.execute(order_header)
 
     connection.commit()
     print('<< CREATED TABLE >> %s << END >>'%(TableName))
@@ -96,10 +115,20 @@ def drop_table(TableName):
     print('<< DROPPED TABLE >> %s << END >>'%(TableName))
 
 
-#drop_table('supplier')
-#drop_table('stock')
-#drop_table('orders')
+# THESE NEED TO BE RUN IN THIS ORDER IF DONE; 
 
-create_table('supplier')
-create_table('stock')
-create_table('order')
+# drop_table('order_detail')
+# drop_table('order_header')
+# drop_table('stock')
+# drop_table('supplier')
+
+# create_table('order_header')
+# create_table('supplier')
+# create_table('stock')
+# create_table('order_detail')
+
+
+
+
+
+
