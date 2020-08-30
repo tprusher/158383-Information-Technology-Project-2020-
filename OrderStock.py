@@ -9,10 +9,13 @@ Goal:
 
 import pymysql
 import pandas as pd
-import pdfkit as pdf
+#import pdfkit as pdf
 from datetime import datetime
 import time 
 import weasyprint as w
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 connection = pymysql.connect(
     host = 'autostockordering.cpgtqfncbzrl.us-east-1.rds.amazonaws.com',
@@ -197,8 +200,8 @@ def create_output(supplier_filter, order_id):
             """%(date_time)
 
         to_portal = """ <div id='myButtons'> 
-        <a href="https://www.google.com/" class="accept_button" id="button-hover"> ACCEPT </a> 
-        <a href="https://www.google.com/" class="edit_button" id="button-hover"> EDIT </a> </div> """
+        <a href="https://www.google.com/" class="accept_button" id="button-hover">ACCEPT </a> 
+        <a href="https://www.google.com/" class="edit_button" id="button-hover">EDIT </a> </div> """
         
         css_style = """
         <style> 
@@ -216,9 +219,16 @@ def create_output(supplier_filter, order_id):
             }
             h3 {
                 color: black;
+                font-size: 11px;
+                font-weight: bold;
+
             }
             #status_color {
                 color: orange;
+            }
+            
+            p { 
+                font-size: 10px;
             }
 
             table.dataframe {
@@ -338,8 +348,35 @@ def create_output(supplier_filter, order_id):
         # Create the pdf 
         my_pdf_output = w.HTML("%s.html"%(pdf_file_name)).write_pdf("%s.pdf"%(pdf_file_name))
         
+        send_email(subject = pdf_file_name, email_copy=pdf_data, vendor = pdf_file_name)
         print("** Finished : %s **"%(pdf_file_name))
 
+def send_email(subject, email_copy, vendor): 
+    #print('SEND EMAIL --\n',subject,'\n', email_copy)  
+
+    username = '158383StockOrdering@gmail.com'
+    password = 'pCKgbp83Mcuuvqe'
+
+    me = '158383StockOrdering@gmail.com'
+
+    # << CHANGE THIS TO CHANGE WHO GETS THE EMAIL >> 
+    # WE WILL NEED THIS TO BE PASSED IN AS A VAR IN REAL LIFE 
+    you = "tprusher@hotmail.co.uk"   
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = "New PO for %s (Pending)"%(vendor)
+    msg['From'] = me
+    msg['To'] = you
+
+    copy = MIMEText(email_copy, 'html')
+    msg.attach(copy)
+
+    mail = smtplib.SMTP('smtp.gmail.com', 587)
+    mail.ehlo()
+    mail.starttls()
+    mail.login(username, password)
+    mail.sendmail(me, you, msg.as_string())
+    mail.quit()
 
 
 get_data()
