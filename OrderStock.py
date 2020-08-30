@@ -110,9 +110,7 @@ def create_order_id():
 
         from 
             order_header oh
-
-            Join (Select Max(DateCreated) DateCreated from order_header) oh2 on oh.DateCreated = oh2.DateCreated 
-        
+            Join (Select Max(DateCreated) DateCreated from order_header) oh2 on oh.DateCreated = oh2.DateCreated        
         ;"""
     LatestOrder = pd.read_sql(z2, con=connection) 
 
@@ -199,6 +197,17 @@ def create_output(supplier_filter, order_id):
             </p>
             """%(date_time)
 
+        client_business = """
+                    <p id = "ClientBusiness"> 
+                    <br><b>Julian's Berry Farm and Cafe <b><br> 
+                    <b> Address: <b> 12 Huna Road, Coastlands, Whakatane 3191<br>
+                    <b> Phone:<b> 07-308 4253 <br>
+                    <a href=" https://www.juliansberryfarm.co.nz/">
+                    <img src="https://www.juliansberryfarm.co.nz/sites/www.juliansberryfarm.co.nz/files/logo.png" width="400" height="200"></a>
+                    </p><br>
+                    """
+                
+
         to_portal = """ <div id='myButtons'> 
         <a href="https://www.google.com/" class="accept_button" id="button-hover">ACCEPT </a> 
         <a href="https://www.google.com/" class="edit_button" id="button-hover">EDIT </a> </div> """
@@ -209,7 +218,9 @@ def create_output(supplier_filter, order_id):
                 background-color: black; 
                 color: white;
             }
-
+            #ClientBusiness {
+                font-size: 13px;
+            }
             #myButtons { 
                 width: 100%; 
                 padding-top: 1%;
@@ -338,7 +349,7 @@ def create_output(supplier_filter, order_id):
 
         pdf_table = table_data.to_html()
         
-        pdf_data = pdf_header + sub_header + pdf_table + to_portal + css_style + footer_details
+        pdf_data = pdf_header + sub_header + pdf_table + to_portal + css_style + client_business + footer_details
         
         # Create a html ouput.
         # po_html = open("%s.html"%(pdf_file_name), "w")
