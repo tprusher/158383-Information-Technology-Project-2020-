@@ -341,12 +341,12 @@ def create_output(supplier_filter, order_id):
         pdf_data = pdf_header + sub_header + pdf_table + to_portal + css_style + footer_details
         
         # Create a html ouput.
-        po_html = open("%s.html"%(pdf_file_name), "w")
-        po_html.write(pdf_data)
-        po_html.close()
+        # po_html = open("%s.html"%(pdf_file_name), "w")
+        # po_html.write(pdf_data)
+        # po_html.close()
 
         # Create the pdf 
-        my_pdf_output = w.HTML("%s.html"%(pdf_file_name)).write_pdf("%s.pdf"%(pdf_file_name))
+        #my_pdf_output = w.HTML("%s.html"%(pdf_file_name)).write_pdf("%s.pdf"%(pdf_file_name))
         
         send_email(subject = pdf_file_name, email_copy=pdf_data, vendor = pdf_file_name)
         print("** Finished : %s **"%(pdf_file_name))
