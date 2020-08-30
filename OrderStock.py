@@ -191,9 +191,9 @@ def create_output(supplier_filter, order_id):
 
         footer_details = """<p id='footer_notes'>
             Order Generated: %s<br>
-            Order For: [CLIENT COMPANY NAME] <br>
-            Contact #: [CLIENT CONTACT #] <br>
-            Services provided by Group 1​ (Codie Springer 13067864,  Kate Robbie 93014642,Thomas Prusher 15131284, Mi Jin Park 19029015​)
+            Services provided by: Group 1​ (Codie Springer 13067864,  Kate Robbie 93014642,Thomas Prusher 15131284, Mi Jin Park 19029015​) <br>
+            Phone: 021 123 456 789<br>
+            Email: 158383StockOrdering@gmail.com
             </p>
             """%(date_time)
 
@@ -305,7 +305,7 @@ def create_output(supplier_filter, order_id):
                 }
 
                 #footer_notes {
-                    color: #DCDCDC;
+                    color: #696969;
                     font-style: italic;
                 }
                 
