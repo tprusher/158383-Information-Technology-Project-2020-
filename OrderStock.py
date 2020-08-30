@@ -9,13 +9,14 @@ Goal:
 
 import pymysql
 import pandas as pd
-#import pdfkit as pdf
 from datetime import datetime
 import time 
-import weasyprint as w
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+#import pdfkit as pdf
+#import weasyprint as w
 
 connection = pymysql.connect(
     host = 'autostockordering.cpgtqfncbzrl.us-east-1.rds.amazonaws.com',
@@ -27,7 +28,6 @@ connection = pymysql.connect(
 
 cur = connection.cursor()
 
-# Goal 1 (Get Data): 
 def get_data():
 
     supplier_count = """ select distinct s.supplierID as suppl from supplier s join stock s2 on s.supplierId = s2.supplierid where s2.SOH <= s2.MinSOH  ;"""
@@ -345,7 +345,7 @@ def create_output(supplier_filter, order_id):
         # po_html.write(pdf_data)
         # po_html.close()
 
-        # Create the pdf 
+        # Create a pdf ouput.
         #my_pdf_output = w.HTML("%s.html"%(pdf_file_name)).write_pdf("%s.pdf"%(pdf_file_name))
         
         send_email(subject = pdf_file_name, email_copy=pdf_data, vendor = pdf_file_name)
@@ -377,6 +377,8 @@ def send_email(subject, email_copy, vendor):
     mail.login(username, password)
     mail.sendmail(me, you, msg.as_string())
     mail.quit()
+
+
 
 
 get_data()

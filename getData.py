@@ -2,13 +2,6 @@ import pymysql
 import openpyxl
 import pandas as pd
 
-# connection = pymysql.connect(
-#     host = 'autostockordering.co7conkey36s.us-east-1.rds.amazonaws.com',
-#     port = 3306,
-#     user = 'adminTom',
-#     password = 'XXHnW0lpK1jKaDujJaQA',
-#     database = "Supplier"
-# )
 
 connection = pymysql.connect(
     host = 'autostockordering.cpgtqfncbzrl.us-east-1.rds.amazonaws.com',
@@ -33,7 +26,7 @@ def get_data(TableName):
 
 def write_to_excel(dataSet): 
     dataSet.to_excel (r'/Users/tprusher/Documents/Coding/158383-Information-Technology-Project-2020-/DataSet.xlsx',
-     index = False, header=True, sheet_name='Tom_Data_Export')
+     index = False, header=True, sheet_name='Data_Export')
 
 
 get_data('order_detail')
