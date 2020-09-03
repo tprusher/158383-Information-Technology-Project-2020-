@@ -24,7 +24,7 @@ def user_list():
 
 def add_user(username, email, password):
     if len(list(password)) <=6:
-        return 2
+        return #maybe an error
     else:
         salt = os.urandom(32)
         hash = hashlib.sha256
@@ -34,9 +34,9 @@ def add_user(username, email, password):
             cur.execute()("INSERT INTO users (username, email, password, salt) VALUES (?, ?, ?, ?)",
                           (username, email, hashPasswd, salt))
             cur.commit()
-            return 1
+            return True
         except pymysql.Error:
-            return -1
+            return False
 def validation(username, password):
     user = cur.execute("SELECT * FROM users WHERE (username =?);",(username,)).fetchall()
     if user:
