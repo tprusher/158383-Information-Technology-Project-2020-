@@ -17,7 +17,7 @@ def get_data(TableName):
     sql = """select * from %s;"""%(TableName)
     print("<< RUNNING SQL:\n%s\n>>"%(sql))
 
-     table_data = pd.read_sql(sql, con=connection)   
+    table_data = pd.read_sql(sql, con=connection)   
     #write_to_excel(table_data)
 
     print("<< TABLE DATA >>")
