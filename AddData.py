@@ -138,7 +138,7 @@ def delete_data(TableName):
 #delete_data('stock')
 
 # insert_supplier_data()
-# insert_stock_data()
+insert_stock_data()
 
 
  

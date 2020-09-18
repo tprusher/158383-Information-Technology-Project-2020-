@@ -1,0 +1,1507 @@
+@font-face {
+  font-family: "iconfont";
+  src: url("fonts/iconfont.eot?g80vyj");
+  src: url("fonts/iconfont.eot?g80vyj#iefix") format("embedded-opentype"), url("fonts/iconfont.ttf?g80vyj") format("truetype"), url("fonts/iconfont.woff?g80vyj") format("woff"), url("fonts/iconfont.svg?g80vyj#iconfont") format("svg");
+}
+body {
+  color: #0a0a0a;
+  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
+  min-width: 370px;
+  min-height: 250px;
+}
+
+.iconFont {
+  font-family: "iconfont";
+  font-size: 0.9em;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    background-color: #1b4965;
+    background-image: url("webfiles/BG.png");
+  }
+
+  #header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 80px;
+    background-color: #00a8e8;
+    padding: 5px 0 0 10px;
+    border-bottom: 6px solid #ffffff;
+    box-sizing: border-box;
+  }
+  #header h1 {
+    color: #ffffff;
+    font-size: 55px;
+    font-weight: 800;
+    display: inline;
+    padding-left: 50px;
+    text-shadow: 2px 2px 0 #0a0a0a;
+  }
+  #header h2 {
+    color: #1b4965;
+    display: inline;
+    margin-left: 15px;
+    font-size: 30px;
+    text-shadow: 1px 1px 0 #ffffff;
+  }
+  #header a {
+    float: right;
+    padding: 5px 10px 5px 10px;
+    margin: 10px 35px 8px 0;
+    border: 3px solid #0a0a0a;
+    border-radius: 15px;
+    background-color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 25px;
+    color: #0a0a0a;
+  }
+  #header a:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    background-color: #00a8e8;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+
+  #loginMain {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 280px;
+    font-size: 50px;
+    font-weight: 800;
+    text-align: center;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 6px solid #0a0a0a;
+  }
+  #loginMain span {
+    font-size: 35px;
+  }
+
+  #loginForm {
+    color: #0a0a0a;
+    font-weight: 400;
+    padding: 30px;
+    text-align: right;
+  }
+  #loginForm label {
+    font-size: 30px;
+    padding: 5px;
+  }
+  #loginForm input {
+    padding: 5px;
+    margin: 5px;
+    font-size: 25px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    width: 280px;
+    border: 2px solid #0a0a0a;
+  }
+  #loginForm .submit {
+    width: 150px;
+    margin-top: 20px;
+    font-size: 25px;
+    color: #ffffff;
+    background-color: #00a8e8;
+  }
+  #loginForm .submit:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #00a8e8;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #dashboardMain {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 70%;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  #welcomeMessage {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    color: #ffffff;
+    font-size: 35px;
+  }
+
+  #dashboardLinks {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+  }
+  #dashboardLinks .dashIconContainer {
+    display: inline-block;
+  }
+  #dashboardLinks .dashIconContainer a {
+    text-decoration: none;
+  }
+  #dashboardLinks .dashIcon {
+    border: 4px solid #0a0a0a;
+    border-radius: 20px;
+    background-color: #ffffff;
+    width: 280px;
+    padding: 35px 15px 35px 15px;
+    margin: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #0a0a0a;
+  }
+  #dashboardLinks .dashIcon:hover {
+    color: #ffffff;
+    background-color: #00a8e8;
+    border-color: #ffffff;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  #dashboardLinks .dashIcon:hover img {
+    opacity: 0.7;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  #dashboardLinks .dashIcon img {
+    width: 140px;
+  }
+
+  #main {
+    margin: 100px 0 5% 5%;
+    width: 90%;
+    background-color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #ordersTable {
+    text-align: center;
+    width: 95%;
+    margin: 25px auto 25px auto;
+  }
+  #ordersTable th {
+    font-size: 20px;
+    padding: 20px 0 20px 0;
+    border: 1px solid #0a0a0a;
+    background-color: #1b4965;
+    color: #ffffff;
+  }
+  #ordersTable td {
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #0a0a0a;
+  }
+  #ordersTable .view {
+    border: none;
+    text-align: left;
+  }
+  #ordersTable .view a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0a0a0a;
+    border: 2px solid #0a0a0a;
+    padding: 0 3px 0 3px;
+  }
+  #ordersTable .view a:hover {
+    color: #1b4965;
+    border-color: #1b4965;
+    background-color: #00a8e8;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #addSupplierButton {
+    margin: 10px 0 0 100px;
+    background-color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 4px;
+    border: 2px solid #ffffff;
+  }
+  #addSupplierButton:hover {
+    border: 2px solid #1b4965;
+    cursor: pointer;
+    color: #1b4965;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #supplierContainer {
+    text-align: center;
+    padding-top: 20px;
+  }
+  #supplierContainer .supplier {
+    width: 410px;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 3px solid #0a0a0a;
+    padding: 20px;
+    margin: 0 20px 20px 20px;
+  }
+  #supplierContainer .supplier .supplierID {
+    float: right;
+    font-weight: 700;
+  }
+  #supplierContainer .supplier h1 {
+    text-align: left;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  #supplierContainer .supplier h2 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  #supplierContainer .supplier .contactContainer {
+    width: 360px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+  }
+  #supplierContainer .supplier .contactContainer p {
+    margin-top: 10px;
+  }
+  #supplierContainer .supplier .contactContainer p a {
+    text-decoration: none;
+    color: #0a0a0a;
+  }
+  #supplierContainer .supplier .contactContainer p a:hover {
+    color: #1b4965;
+  }
+  #supplierContainer .supplier .contactContainer .email {
+    font-size: 15px;
+  }
+  #supplierContainer .supplier .editSupplier {
+    float: right;
+  }
+  #supplierContainer .supplier .editSupplier .editSupplierButton {
+    color: #1b4965;
+    background-color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    border: 1px solid #0a0a0a;
+    padding: 5px;
+  }
+  #supplierContainer .supplier .editSupplier .editSupplierButton:hover {
+    color: #ffffff;
+    border-color: #00a8e8;
+    background-color: #00a8e8;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #addSupplierBG {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  #addSupplier {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-sizing: border-box;
+    width: 800px;
+    height: 320px;
+    border: 4px solid #00a8e8;
+    padding: 20px 40px 20px 40px;
+  }
+  #addSupplier h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  #addSupplier form {
+    text-align: right;
+  }
+  #addSupplier form label {
+    display: inline-block;
+    width: 200px;
+    font-size: 25px;
+  }
+  #addSupplier form input {
+    display: inline-block;
+    margin: 0 100px 10px 10px;
+    width: 300px;
+    font-size: 20px;
+    border: 2px solid #0a0a0a;
+    padding: 3px;
+  }
+  #addSupplier form #submit {
+    width: 150px;
+    font-size: 25px;
+    background-color: #1b4965;
+    color: #ffffff;
+  }
+  #addSupplier form #submit:hover {
+    color: #0a0a0a;
+    background-color: #00a8e8;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #hideAddSupplier {
+    position: fixed;
+    top: 150px;
+    right: 10%;
+    font-size: 25px;
+    font-weight: 800;
+    color: #ffffff;
+    border: none;
+    background: none;
+  }
+  #hideAddSupplier:hover {
+    cursor: pointer;
+    color: #00a8e8;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #addStockBG {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  #addStock {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-sizing: border-box;
+    width: 650px;
+    height: 320px;
+    border: 4px solid #0a0a0a;
+    padding: 20px 40px 20px 40px;
+  }
+  #addStock h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  #addStock form {
+    text-align: right;
+  }
+  #addStock form label {
+    display: inline-block;
+    width: 150px;
+    font-size: 20px;
+  }
+  #addStock form input {
+    display: inline-block;
+    margin: 0 100px 10px 10px;
+    width: 250px;
+    font-size: 20px;
+    border: 2px solid #0a0a0a;
+    padding: 3px;
+  }
+  #addStock form #submit {
+    width: 100px;
+    font-size: 20px;
+    background-color: #ffffff;
+    color: #0a0a0a;
+  }
+  #addStock form #submit:hover {
+    color: #1b4965;
+    background-color: #00a8e8;
+    cursor: pointer;
+    border-color: #1b4965;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #deleteButton {
+    float: right;
+    margin: 2px 25px 0 5px;
+  }
+  #deleteButton button {
+    border: 2px solid #0a0a0a;
+    background: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px;
+  }
+  #deleteButton button:hover {
+    color: #ffffff;
+    background-color: #0a0a0a;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #confirmBG {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  #confirm {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1b4965;
+    box-sizing: border-box;
+    width: 650px;
+    height: 240px;
+    border: 4px solid #ffffff;
+    padding: 20px 40px 20px 40px;
+    text-align: center;
+  }
+  #confirm h2 {
+    font-size: 32px;
+    color: #ffffff;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  #confirm button {
+    background-color: #ffffff;
+    color: #0a0a0a;
+    font-size: 28px;
+    font-weight: 600;
+    border: 4px solid #0a0a0a;
+    padding: 20px 30px 20px 30px;
+    margin: 10px 15px 0 15px;
+  }
+  #confirm button:hover {
+    color: #ffffff;
+    background-color: #1b4965;
+    cursor: pointer;
+    border-color: #ffffff;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #editSupplierForm {
+    text-align: center;
+    width: 700px;
+    margin: 44px auto 0px auto;
+  }
+  #editSupplierForm form {
+    text-align: right;
+  }
+  #editSupplierForm form label {
+    display: inline;
+    font-size: 30px;
+    padding: 15px 10px 15px 10px;
+  }
+  #editSupplierForm form input {
+    display: inline;
+    font-size: 25px;
+    margin: 5px 0 5px 0;
+    padding: 5px;
+    width: 420px;
+  }
+  #editSupplierForm form #save {
+    width: 150px;
+    font-size: 20px;
+    background-color: #ffffff;
+    border: 2px solid #0a0a0a;
+    color: #0a0a0a;
+    padding: 5px;
+  }
+  #editSupplierForm form #save:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #1b4965;
+    border-color: #1b4965;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #editSupplierTable {
+    margin: 25px 20px 15px 20px;
+  }
+  #editSupplierTable h1 {
+    font-size: 35px;
+    font-weight: 600;
+    width: 100%;
+    border-bottom: 1px solid #0a0a0a;
+  }
+  #editSupplierTable table {
+    width: 95%;
+    margin: 25px 5% 0 5%;
+  }
+  #editSupplierTable table th {
+    font-size: 20px;
+    background-color: #00a8e8;
+    text-align: left;
+    color: #ffffff;
+    padding: 15px 5px 15px 5px;
+    border: 1px solid #0a0a0a;
+  }
+  #editSupplierTable table td {
+    font-size: 18px;
+    padding: 10px 5px 10px 5px;
+    border: 1px solid #0a0a0a;
+  }
+  #editSupplierTable table .edit {
+    border: none;
+    width: 50px;
+    text-align: center;
+  }
+  #editSupplierTable table .edit button {
+    color: #0a0a0a;
+    border: 2px solid #0a0a0a;
+    background: none;
+    padding: 2px 5px 2px 5px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  #editSupplierTable table .edit button:hover {
+    color: #ffffff;
+    background-color: #0a0a0a;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #addStockButton {
+    float: right;
+    padding: 5px 10px 2px 10px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #ffffff;
+    border: 0px solid #ffffff;
+  }
+  #addStockButton:hover {
+    color: #00a8e8;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #hideAddStock {
+    position: fixed;
+    top: 250px;
+    right: 12%;
+    font-size: 25px;
+    font-weight: 800;
+    color: #ffffff;
+    border: none;
+    background: none;
+  }
+  #hideAddStock:hover {
+    cursor: pointer;
+    color: #00a8e8;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #itemDetails {
+    text-align: center;
+    margin-top: 10px;
+  }
+  #itemDetails h1 {
+    font-size: 50px;
+  }
+
+  #editStockForm {
+    text-align: center;
+    width: 700px;
+    margin: 30px auto 20px auto;
+    color: #ffffff;
+    background-color: #1b4965;
+    padding: 40px 30px 20px 0;
+  }
+  #editStockForm form {
+    text-align: right;
+  }
+  #editStockForm form label {
+    display: inline;
+    font-size: 30px;
+    padding: 15px 10px 15px 10px;
+  }
+  #editStockForm form input {
+    display: inline;
+    font-size: 25px;
+    margin: 5px 0 5px 0;
+    padding: 5px;
+    width: 420px;
+  }
+  #editStockForm form #submit {
+    width: 100px;
+    background-color: #ffffff;
+    border: 2px solid #1b4965;
+    font-weight: 500;
+  }
+  #editStockForm form #submit:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #1b4965;
+    border-color: #ffffff;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #stockContainer {
+    padding: 25px;
+  }
+  #stockContainer h3 {
+    font-size: 30px;
+    padding: 15px 0 15px 0;
+  }
+  #stockContainer h3:hover {
+    cursor: pointer;
+    color: #1b4965;
+    text-decoration: underline;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+  #stockContainer h3 span {
+    font-size: 0.8em;
+  }
+  #stockContainer .supplier {
+    padding: -2px 3px 15px 3px;
+    border: 2px solid #0a0a0a;
+  }
+  #stockContainer .supplier .item {
+    text-align: center;
+  }
+  #stockContainer .supplier .item h1 {
+    display: inline;
+    font-size: 20px;
+  }
+  #stockContainer .supplier .item form {
+    font-size: 17px;
+    width: 100%;
+    padding: 15px 0 15px 0;
+    border-top: 1px solid #0a0a0a;
+  }
+  #stockContainer .supplier .item form input {
+    width: 40px;
+    font-size: 20px;
+    border: 1px solid #0a0a0a;
+    color: #0a0a0a;
+    padding: 2px;
+    margin-right: 5px;
+  }
+  #stockContainer .supplier .item form .radioLabel {
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #stockContainer .supplier .item form .radio {
+    width: 25px;
+    display: inline;
+    cursor: pointer;
+    padding: 0;
+  }
+  #stockContainer .supplier .item form .submit {
+    display: inline;
+    width: 60px;
+    background-color: #ffffff;
+    border: 2px solid #0a0a0a;
+    padding: 5px 10px 5px 10px;
+    margin: 5px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  #stockContainer .supplier .item form .submit:hover {
+    cursor: pointer;
+  }
+  #stockContainer .supplier .item form label {
+    margin-left: 5px;
+  }
+  #stockContainer .supplier .item form .radioLabel {
+    margin-left: 5px;
+  }
+}
+#fullFooter {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 10px 0 10px 0;
+  background-color: #ffffff;
+  text-align: center;
+  border-top: 2px solid #0a0a0a;
+}
+#fullFooter h1 {
+  display: inline;
+  font-weight: 400;
+  margin: 0 160px 0 160px;
+}
+#fullFooter h2 {
+  display: inline;
+  font-weight: 200;
+}
+
+@media screen and (max-width: 1023px) {
+  #header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 110px;
+    background-color: #00a8e8;
+    background-image: url("webfiles/headBG.png");
+    padding: 5px 0 0 10px;
+    border-bottom: 3px solid #0a0a0a;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  #header h1 {
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 800;
+    padding-left: 5px;
+    text-shadow: 1px 1px 0 #0a0a0a;
+    margin-bottom: 22px;
+  }
+  #header h2 {
+    display: none;
+  }
+  #header a {
+    padding: 8px 10px 8px 10px;
+    border: 1px solid #0a0a0a;
+    border-radius: 20px;
+    background-color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    color: #0a0a0a;
+  }
+  #header a:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    background-color: #00a8e8;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+
+  #loginMain {
+    width: 100%;
+    font-size: 40px;
+    font-weight: 800;
+    text-align: center;
+    background-color: #ffffff;
+    margin-top: 50px;
+  }
+  #loginMain span {
+    font-size: 35px;
+  }
+
+  #loginForm {
+    color: #0a0a0a;
+    font-weight: 400;
+    text-align: center;
+  }
+  #loginForm form {
+    margin-top: 25px;
+  }
+  #loginForm label {
+    font-size: 25px;
+  }
+  #loginForm input {
+    display: block;
+    padding: 10px;
+    margin: 5px auto 0px auto;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    width: 70%;
+    border: 2px solid #0a0a0a;
+  }
+  #loginForm .submit {
+    width: 150px;
+    font-size: 20px;
+    padding: 20px;
+    color: #ffffff;
+    background-color: #00a8e8;
+  }
+  #loginForm .submit:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #00a8e8;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #dashboardMain {
+    width: 100%;
+    margin-top: 130px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  #welcomeMessage {
+    color: #0a0a0a;
+    font-size: 25px;
+    padding: 10px;
+  }
+
+  #dashboardLinks {
+    margin-top: 30px;
+    width: 100%;
+  }
+  #dashboardLinks .dashIconContainer {
+    display: block;
+  }
+  #dashboardLinks .dashIconContainer a {
+    text-decoration: none;
+  }
+  #dashboardLinks .dashIcon {
+    border: 4px solid #0a0a0a;
+    border-radius: 30px;
+    background-color: #ffffff;
+    width: 45%;
+    padding: 20px 15px 20px 15px;
+    margin: 15px auto 15px auto;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0a0a0a;
+  }
+  #dashboardLinks .dashIcon:hover {
+    color: #ffffff;
+    background-color: #00a8e8;
+    border-color: #00a8e8;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  #dashboardLinks .dashIcon img {
+    width: 80px;
+  }
+
+  #ordersTable {
+    text-align: center;
+    width: 99%;
+    margin: 125px auto 25px auto;
+  }
+  #ordersTable th {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 2px 10px 2px;
+    border: 1px solid #0a0a0a;
+    background-color: #1b4965;
+    color: #ffffff;
+  }
+  #ordersTable td {
+    font-size: 12px;
+    padding: 8px 1px 8px 1px;
+    border: 1px solid #0a0a0a;
+  }
+  #ordersTable .view {
+    border: none;
+    text-align: left;
+  }
+  #ordersTable .view a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 3px 5px 3px 5px;
+    margin-left: 1px;
+    color: #0a0a0a;
+    border: 1px solid #0a0a0a;
+  }
+  #ordersTable .view a:hover {
+    color: #1b4965;
+    border-color: #1b4965;
+    background-color: #00a8e8;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #addSupplierButton {
+    margin: 120px 0 0 50px;
+    background: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 4px;
+    border: 2px solid #ffffff;
+  }
+  #addSupplierButton:hover {
+    cursor: pointer;
+    color: #1b4965;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #supplierContainer {
+    text-align: center;
+    padding-top: 10px;
+  }
+  #supplierContainer .supplier {
+    width: 375px;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 2px solid #0a0a0a;
+    background-color: #1b4965;
+    padding: 20px;
+    margin: 0 20px 20px 20px;
+    color: #ffffff;
+  }
+  #supplierContainer .supplier .supplierID {
+    float: right;
+    font-weight: 700;
+  }
+  #supplierContainer .supplier h1 {
+    text-align: left;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  #supplierContainer .supplier h2 {
+    text-align: left;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  #supplierContainer .supplier .contactContainer {
+    width: 360px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+  }
+  #supplierContainer .supplier .contactContainer p {
+    margin-top: 10px;
+  }
+  #supplierContainer .supplier .contactContainer p a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  #supplierContainer .supplier .contactContainer p a:hover {
+    color: #1b4965;
+  }
+  #supplierContainer .supplier .contactContainer .email {
+    font-size: 11px;
+  }
+  #supplierContainer .supplier .editSupplier {
+    float: right;
+  }
+  #supplierContainer .supplier .editSupplier .editSupplierButton {
+    color: #ffffff;
+    background-color: #1b4965;
+    text-decoration: none;
+    font-size: 15px;
+    border: 1px solid #ffffff;
+    padding: 6px;
+  }
+  #supplierContainer .supplier .editSupplier .editSupplierButton:hover {
+    border-color: #00a8e8;
+    background-color: #00a8e8;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #addSupplierBG {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #1b4965;
+    color: #ffffff;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  #addSupplier {
+    width: 80%;
+    margin: 60px auto 0 auto;
+  }
+  #addSupplier h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+  #addSupplier form {
+    text-align: left;
+    width: 100%;
+  }
+  #addSupplier form label {
+    font-size: 17px;
+    padding-bottom: 5px;
+  }
+  #addSupplier form input {
+    margin: 0 100px 10px 10px;
+    width: 100%;
+    font-size: 20px;
+    border: 2px solid #0a0a0a;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+  #addSupplier form #submit {
+    font-size: 20px;
+    width: 100px;
+    margin-top: 20px;
+    margin-left: 5px;
+    background-color: #1b4965;
+    border-color: #ffffff;
+    color: #ffffff;
+    padding: 5px;
+  }
+  #addSupplier form #submit:hover {
+    color: #0a0a0a;
+    background-color: #00a8e8;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #hideAddSupplier {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    background: none;
+    padding: 5px;
+  }
+  #hideAddSupplier:hover {
+    cursor: pointer;
+    color: #00a8e8;
+    border-color: #00a8e8;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #stockContainer {
+    margin-top: 110px;
+  }
+  #stockContainer h3 {
+    font-size: 25px;
+    padding: 20px 0 20px 0;
+  }
+  #stockContainer h3:hover {
+    cursor: pointer;
+    color: #1b4965;
+    text-decoration: underline;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+  #stockContainer h3 span {
+    font-size: 0.8em;
+  }
+  #stockContainer .item {
+    text-align: center;
+  }
+  #stockContainer .item h1 {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  #stockContainer .item form {
+    font-size: 20px;
+    width: 100%;
+    padding: 15px 0 15px 0;
+    border-top: 1px solid #0a0a0a;
+    text-align: center;
+  }
+  #stockContainer .item form input {
+    width: 50px;
+    margin: 5px auto 5px auto;
+    display: block;
+    font-size: 15px;
+    border: 1px solid #0a0a0a;
+    color: #0a0a0a;
+    padding: 5px;
+  }
+  #stockContainer .item form .radioLabel {
+    margin-top: 10px;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  #stockContainer .item form .radio {
+    margin-top: 5px;
+    display: inline;
+    cursor: pointer;
+    padding: 0;
+  }
+  #stockContainer .item form .submit {
+    display: block;
+    width: auto;
+    margin: 10px auto 0 auto;
+    background-color: #ffffff;
+    border: 2px solid #0a0a0a;
+    padding: 8px 15px 8px 15px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  #stockContainer .item form .submit:hover {
+    cursor: pointer;
+  }
+  #stockContainer .item form label {
+    margin-left: 5px;
+  }
+  #stockContainer .item form .radioLabel {
+    margin-left: 5px;
+  }
+
+  #addStockBG {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  #addStock {
+    margin-top: 25px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 40px 20px 40px;
+  }
+  #addStock h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  #addStock form {
+    text-align: left;
+  }
+  #addStock form label {
+    font-size: 16px;
+  }
+  #addStock form input {
+    margin: 0 100px 10px 10px;
+    width: 100%;
+    font-size: 16px;
+    border: 2px solid #0a0a0a;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+  #addStock form #submit {
+    width: 80px;
+    font-size: 16px;
+    background-color: #1b4965;
+    color: #ffffff;
+    padding: 8px;
+  }
+  #addStock form #submit:hover {
+    color: #1b4965;
+    background-color: #00a8e8;
+    cursor: pointer;
+    border-color: #1b4965;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #deleteButton {
+    margin: 120px 25px 0 5px;
+    text-align: center;
+  }
+  #deleteButton button {
+    border: 1px solid #0a0a0a;
+    background: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  #deleteButton button:hover {
+    color: #ffffff;
+    background-color: #0a0a0a;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #confirmBG {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  #confirm {
+    background-color: #1b4965;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 40px 20px 40px;
+    text-align: center;
+  }
+  #confirm h2 {
+    font-size: 25px;
+    color: #ffffff;
+    font-weight: 300;
+    margin-bottom: 15px;
+  }
+  #confirm button {
+    background-color: #ffffff;
+    color: #0a0a0a;
+    font-size: 20px;
+    font-weight: 600;
+    border: 4px solid #0a0a0a;
+    padding: 20px 30px 20px 30px;
+    margin: 10px 15px 0 15px;
+  }
+  #confirm button:hover {
+    color: #ffffff;
+    background-color: #1b4965;
+    cursor: pointer;
+    border-color: #ffffff;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #editSupplierForm {
+    text-align: center;
+    width: 350px;
+    margin: 20px auto 0px auto;
+  }
+  #editSupplierForm form {
+    text-align: left;
+    width: 100%;
+  }
+  #editSupplierForm form label {
+    display: inline;
+    font-size: 15px;
+    padding: 15px 10px 15px 10px;
+  }
+  #editSupplierForm form input {
+    display: inline;
+    font-size: 15px;
+    margin: 5px 0 5px 0;
+    padding: 5px;
+    width: 350px;
+  }
+  #editSupplierForm form #save {
+    display: block;
+    width: 100px;
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: #ffffff;
+    border: 1px solid #0a0a0a;
+    color: #0a0a0a;
+    padding: 5px;
+  }
+  #editSupplierForm form #save:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #1b4965;
+    border-color: #1b4965;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #editSupplierTable {
+    margin: 25px 20px 15px 20px;
+  }
+  #editSupplierTable h1 {
+    font-size: 25px;
+    font-weight: 600;
+    width: 100%;
+    border-bottom: 1px solid #0a0a0a;
+  }
+  #editSupplierTable table {
+    width: 95%;
+    margin: 25px 5% 0 5%;
+  }
+  #editSupplierTable table th {
+    font-size: 14px;
+    background-color: #00a8e8;
+    text-align: left;
+    color: #ffffff;
+    padding: 15px 5px 15px 5px;
+    border: 1px solid #0a0a0a;
+  }
+  #editSupplierTable table td {
+    font-size: 12px;
+    padding: 10px 5px 10px 5px;
+    border: 1px solid #0a0a0a;
+  }
+  #editSupplierTable table .edit {
+    border: none;
+    width: 30px;
+    text-align: center;
+  }
+  #editSupplierTable table .edit button {
+    color: #0a0a0a;
+    border: 2px solid #0a0a0a;
+    background: none;
+    padding: 5px 5px 5px 5px;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 500;
+  }
+  #editSupplierTable table .edit button:hover {
+    color: #ffffff;
+    background-color: #0a0a0a;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #addStockButton {
+    float: right;
+    padding: 5px 10px 2px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #ffffff;
+    border: 0px solid #ffffff;
+  }
+  #addStockButton:hover {
+    color: #00a8e8;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #hideAddStock {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0a0a0a;
+    border: none;
+    background: none;
+  }
+  #hideAddStock:hover {
+    cursor: pointer;
+    color: #00a8e8;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #fullFooter {
+    display: none;
+  }
+}

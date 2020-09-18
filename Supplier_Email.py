@@ -30,87 +30,20 @@ cur = connection.cursor()
 
 def get_data():
 
-    supplier_count = """ select distinct s.supplierID as suppl from supplier s join stock s2 on s.supplierId = s2.supplierid where s2.SOH <= s2.MinSOH  ;"""
+    supplier_count = """ Select distinct SupplierID as suppl From order_detail Where Status='Approved' and Date between date - 7 and date;"""
     supplier_result = pd.read_sql(supplier_count, con=connection)   
     
     for index, row in supplier_result.iterrows():
         supplier_filter = row['suppl']
 
-        sql = """
-            select 
-                st.supplierid as supplierid,
-                su.CompanyName as CompanyName,
-                st.SupplierSKU,
-                st.ItemID as ItemID,
-                st.Name,
-                st.Price,
-                -- st.ShelfLife,
-                -- st.OrderFrequency,
-                
-                st.SOH,
-                -- st.LastUpdated,
-                 st.MinSOH,
-                 st.MaxSOH,
-                -- st.MOQ, 
-                (st.MaxSOH - st.SOH) OrderQty
-        
-            from 
-                stock st
-                Left Join supplier su on st.supplierid = su.supplierid 
-            
-            where 
-                SOH <= MinSOH 
-                and st.supplierId = %s
-                
-                ;"""%(supplier_filter)
-
-        table_data = pd.read_sql(sql, con=connection)   
-        print(table_data)
-        b = insert_order_data(table_data) 
+        #b = insert_order_data(table_data) 
 
         # NOW CREATE THE OUTPUT.. 
-        create_output(supplier_filter, b)
-
-
-def insert_order_data(data): 
-    order_id = create_order_id()
-       
-    for index, row in data.iterrows():
-        insert_sql = """
-                INSERT INTO order_detail (OrderID, Date, SupplierID, ItemID, Total, Status)
-                VALUES (%s, current_timestamp(), %s, %s, %s, 'Pending')
-                """%(order_id, row['supplierid'], row['ItemID'], row['Price'] * row['OrderQty']) 
-
-        print(insert_sql)
-        cur.execute(insert_sql)
-        connection.commit()
-
-    return order_id
-    
-
-def create_order_id(): 
-
-    z = """insert into order_header (DateCreated, Status) values(current_timestamp(), 'Pending');"""
-    cur.execute(z)
-    connection.commit()
-    z2 = """
-        select 
-            oh.OrderID OrderID,
-            oh.DateCreated
-
-        from 
-            order_header oh
-            Join (Select Max(DateCreated) DateCreated from order_header) oh2 on oh.DateCreated = oh2.DateCreated        
-        ;"""
-    LatestOrder = pd.read_sql(z2, con=connection) 
-
-    Tom_ORDER_ID = LatestOrder['OrderID']
-
-    return Tom_ORDER_ID[0]
+        create_output(supplier_filter)
 
 
 
-def create_output(supplier_filter, order_id): 
+def create_output(supplier_filter): 
 
         output_sql = """ 
             SELECT
@@ -119,7 +52,7 @@ def create_output(supplier_filter, order_id):
                 su.CompanyName,
                 s.SupplierSKU,
                 s.Name as ProductName,
-                (s.MaxSOH - s.SOH) OrderQty,
+                case when (s.MinSOH - s.SOH) >= s.MOQ then (s.MinSOH - s.SOH) else (s.MaxSOH - s.SOH) end OrderQty,
                 od.Total,
                 od.Status
 
@@ -129,10 +62,11 @@ def create_output(supplier_filter, order_id):
                 Join supplier su on od.SupplierID = su.SupplierID
 
             Where
-                od.OrderID = %s 
-                and od.SupplierID = %s
+                od.SupplierID = %s
+                and od.Date between date - 7 and date
+                and od.Status = 'Approved'
 
-        ;"""%(order_id, supplier_filter)
+        ;"""%(supplier_filter)
 
         order_val_sql = """
             SELECT
@@ -144,9 +78,12 @@ def create_output(supplier_filter, order_id):
                 Join supplier su on od.SupplierID = su.SupplierID
 
             Where
-                od.OrderID = %s 
-                and od.SupplierID = %s
-        """%(order_id, supplier_filter)
+                od.SupplierID = %s
+                and od.Date between date - 7 and date
+                and od.Status = 'Approved'
+                ;
+
+        """%(supplier_filter)
 
         table_data = pd.read_sql(output_sql, con=connection) 
         #print(table_data)
@@ -157,37 +94,24 @@ def create_output(supplier_filter, order_id):
         suppl_name = pd.read_sql("""Select distinct CompanyName from supplier where supplierId = %s;"""%(supplier_filter), con=connection) 
         supplyKEY = suppl_name['CompanyName'][0]
 
-        filtered_order_id = pd.read_sql("""
-        select OrderID, Status from order_detail od 
-            Where od.OrderID = %s and od.SupplierID = %s
-            Having Max(Date)
-        ;"""%(order_id, supplier_filter), con=connection)
-
-        filtered_order_key =  filtered_order_id['OrderID'][0]
-        order_status_key = filtered_order_id['Status'][0]
-        order_value = order_value_df['OrderValue'][0]
-          
+         
         date_time = datetime.now().strftime("%d/%m/%y %H:%M")
 
         pdf_file_name = '%s Order'%(supplyKEY)
 
         pdf_header = """<h2> %s</h2>"""%(supplyKEY)
-        sub_header = """<h4> 
-                        Order ID: %s <br> 
-                        Status: %s <br>
-                        Order Value: $%s
-                        </h4>
-                        """%(filtered_order_key, order_status_key, order_value)
 
+        #  Services provided by: Group 1​ | Codie Springer,  Kate Robbie,Thomas Prusher, Mi Jin Park <br>
         footer_details = """<p id='footer_notes'>
             Order Generated: %s<br>
-            Services provided by: Group 1 | Codie Springer,  Kate Robbie, Thomas Prusher , Mi Jin Park <br>
+           
             Phone: 021 123 456 789<br>
             Email: 158383StockOrdering@gmail.com
             </p>
             """%(date_time)
 
         client_business = """
+                    <h4> Deliver to: </h4>
                     <p id = "ClientBusiness"> 
                     <br><b>Julian's Berry Farm and Cafe <b><br> 
                     <b> Address: <b> 12 Huna Road, Coastlands, Whakatane 3191<br>
@@ -198,11 +122,9 @@ def create_output(supplier_filter, order_id):
                     """
                 
 
-        to_portal = """ <div id='myButtons'> 
-        <button type="button" 
-        <a href="http://52.65.44.236/order_detail.php?orderFilterID=%s" class="accept_button" id="button-hover">ACCEPT </a> 
-        </button>
-        </div> """%(order_id)
+        # to_portal = """ <div id='myButtons'> 
+        # <a href="https://www.google.com/" class="accept_button" id="button-hover">ACCEPT </a> 
+        # <a href="https://www.google.com/" class="edit_button" id="button-hover">EDIT </a> </div> """
         
         css_style = """
         <style> 
@@ -210,9 +132,7 @@ def create_output(supplier_filter, order_id):
                 background-color: black; 
                 color: white;
             }
-            #ClientBusiness {
-                font-size: 13px;
-            }
+            
             #myButtons { 
                 width: 100%; 
                 padding-top: 1%;
@@ -341,7 +261,7 @@ def create_output(supplier_filter, order_id):
 
         pdf_table = table_data.to_html()
         
-        pdf_data = pdf_header + sub_header + pdf_table + to_portal + css_style + client_business + footer_details
+        pdf_data = pdf_header + pdf_table + css_style + client_business + footer_details
         
         # Create a html ouput.
         # po_html = open("%s.html"%(pdf_file_name), "w")
@@ -365,11 +285,9 @@ def send_email(subject, email_copy, vendor):
     # << CHANGE THIS TO CHANGE WHO GETS THE EMAIL >> 
     # WE WILL NEED THIS TO BE PASSED IN AS A VAR IN REAL LIFE 
     recipients = ["tprusher@hotmail.co.uk" , "pietapan@outlook.com", "codie.springer@gmail.com", "mijinpark87@gmail.com"]  
-    #recipients = ["tprusher@hotmail.co.uk"]
-
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = "New PO for %s (Pending)"%(vendor)
+    msg['Subject'] = "SUPPLIER EMAIL --> for Julian's Berry Farm and Cafe"
     msg['From'] = me
     msg['To'] = ", ".join(recipients)
 
@@ -382,6 +300,8 @@ def send_email(subject, email_copy, vendor):
     mail.login(username, password)
     mail.sendmail(me, recipients, msg.as_string())
     mail.quit()
+
+
 
 
 get_data()

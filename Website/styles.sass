@@ -1,0 +1,1363 @@
+//SASS Document
+//outputs to styles.css in compressed format
+
+//**********COLOURS**********
+
+$black:   #0a0a0a
+$white:   #ffffff
+$blue1:   #00a8e8
+$blue2:   #1b4965 
+
+//***************************
+@font-face
+    font-family: 'iconfont'
+    src: url('fonts/iconfont.eot?g80vyj')
+    src: url('fonts/iconfont.eot?g80vyj#iefix') format('embedded-opentype'), url('fonts/iconfont.ttf?g80vyj') format('truetype'), url('fonts/iconfont.woff?g80vyj') format('woff'), url('fonts/iconfont.svg?g80vyj#iconfont') format('svg')
+body
+    color: $black
+    font-family: sans-serif
+    font-family: 'Poppins', sans-serif
+    min-width: 370px
+    min-height: 250px
+    
+.iconFont
+    font-family: 'iconfont'
+    font-size: 0.9em
+
+// *************************************************************************************************
+// *************************************************************************************************
+// ***-------------------------------------------------------------------------------------------***
+// ***-------------------------------------------------------------------------------------------***
+// ***--------------------------------------DESKTOP VERSION--------------------------------------***
+// ***-------------------------------------------------------------------------------------------***
+// ***-------------------------------------------------------------------------------------------***
+// *************************************************************************************************
+// *************************************************************************************************
+
+@media screen and (min-width: 1024px)
+    body
+        background-color: $blue2
+        background-image: url("webfiles/BG.png")
+        
+    #header
+        position: fixed
+        top: 0px
+        left: 0px
+        width: 100%
+        height: 80px
+        background-color: $blue1
+        padding: 5px 0 0 10px
+        border-bottom: 6px solid $white
+        box-sizing: border-box
+        h1
+            color: $white
+            font-size: 55px
+            font-weight: 800
+            display: inline
+            padding-left: 50px
+            text-shadow: 2px 2px 0 $black
+        h2
+            color: $blue2
+            display: inline
+            margin-left: 15px
+            font-size: 30px
+            text-shadow: 1px 1px 0 $white
+        a
+            float: right
+            padding: 5px 10px 5px 10px
+            margin: 10px 35px 8px 0
+            border: 3px solid $black
+            border-radius: 15px
+            background-color: $white
+            text-decoration: none
+            font-weight: 500
+            font-size: 25px
+            color: $black
+            &:hover
+                color: $white
+                border-color: $white
+                background-color: $blue1
+                -webkit-transition: all 0.5s ease-in-out
+                -moz-transition: all 0.5s ease-in-out
+                -ms-transition: all 0.5s ease-in-out
+                -o-transition: all 0.5s ease-in-out
+                transition: all 0.5s ease-in-out
+    
+            
+    // index.html specific
+    #loginMain
+        position: fixed
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        width: 550px
+        height: 280px
+        font-size: 50px
+        font-weight: 800
+        text-align: center
+        padding: 30px
+        background-color: $white
+        border: 6px solid $black
+        span
+            font-size: 35px
+            
+    #loginForm
+        color: $black
+        font-weight: 400
+        padding: 30px
+        text-align: right
+        label
+            font-size: 30px
+            padding: 5px
+        input
+            padding: 5px
+            margin: 5px
+            font-size: 25px
+            font-family: 'Poppins', sans-serif
+            font-weight: 500
+            width: 280px
+            border: 2px solid $black
+        .submit
+            width: 150px
+            margin-top: 20px
+            font-size: 25px
+            color: $white
+            background-color: $blue1
+            &:hover
+                cursor: pointer
+                background-color: $white
+                color: $blue1
+                -webkit-transition: all 0.3s ease-in-out
+                -moz-transition: all 0.3s ease-in-out
+                -ms-transition: all 0.3s ease-in-out
+                -o-transition: all 0.3s ease-in-out
+                transition: all 0.3s ease-in-out
+    
+            
+    // dashboard.html specific
+    #dashboardMain
+        position: fixed
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        width: 100%
+        height: 70%
+        text-align: center
+        text-decoration: none
+        
+    #welcomeMessage
+        position: fixed
+        top: 50px
+        left: 50px
+        color: $white
+        font-size: 35px
+        
+    #dashboardLinks 
+        position: fixed
+        left: 50%
+        top: 50%
+        width: 100%
+        transform: translate(-50%, -50%)
+        .dashIconContainer
+            display: inline-block
+            a
+                text-decoration: none
+        .dashIcon
+            border: 4px solid $black
+            border-radius: 20px
+            background-color: $white
+            width: 280px
+            padding: 35px 15px 35px 15px
+            margin: 10px
+            font-size: 30px
+            font-weight: 600
+            color: $black
+            &:hover
+                color: $white
+                background-color: $blue1
+                border-color: $white
+                -webkit-transition: all 0.4s ease-in-out
+                -moz-transition: all 0.4s ease-in-out
+                -ms-transition: all 0.4s ease-in-out
+                -o-transition: all 0.4s ease-in-out
+                transition: all 0.4s ease-in-out
+                img
+                    opacity: 0.7
+                    -webkit-transition: all 0.4s ease-in-out
+                    -moz-transition: all 0.4s ease-in-out
+                    -ms-transition: all 0.4s ease-in-out
+                    -o-transition: all 0.4s ease-in-out
+                    transition: all 0.4s ease-in-out
+            img
+                width: 140px
+                
+    // Main
+    #main
+        margin: 100px 0 5% 5%
+        width: 90%
+        background-color: $white
+        padding-top: 10px
+        padding-bottom: 10px
+        
+    // orders.html specific        
+    #ordersTable
+        text-align: center
+        width: 95%
+        margin: 25px auto 25px auto
+        th
+            font-size: 20px
+            padding: 20px 0 20px 0
+            border: 1px solid $black
+            background-color: $blue2
+            color: $white
+        td
+            font-size: 18px
+            padding: 10px
+            border: 1px solid $black
+        .view
+            border: none
+            text-align: left
+            a
+                text-decoration: none
+                font-size: 20px
+                font-weight: 600
+                color: $black
+                border: 2px solid $black
+                padding: 0 3px 0 3px
+                &:hover
+                    color: $blue2
+                    border-color: $blue2
+                    background-color: $blue1
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+
+   
+    // supplier.html Specific
+    
+    #addSupplierButton
+        margin: 10px 0 0 100px
+        background-color: $white
+        font-size: 20px
+        font-weight: 600
+        padding: 4px
+        border: 2px solid $white
+        &:hover
+            border: 2px solid $blue2
+            cursor: pointer
+            color: $blue2
+            -webkit-transition: all 0.2s ease-in-out
+            -moz-transition: all 0.2s ease-in-out
+            -ms-transition: all 0.2s ease-in-out
+            -o-transition: all 0.2s ease-in-out
+            transition: all 0.2s ease-in-out
+    
+    #supplierContainer
+        text-align: center
+        padding-top: 20px
+        .supplier
+            width: 410px
+            display: inline-block
+            box-sizing: border-box
+            border: 3px solid $black
+            padding: 20px
+            margin: 0 20px 20px 20px
+            .supplierID
+                float: right
+                font-weight: 700                
+            h1
+                text-align: left
+                font-size: 30px
+                font-weight: 600
+                margin-bottom: 3px
+            h2
+                text-align: left
+                font-size: 20px
+                font-weight: 300
+        
+            .contactContainer
+                width: 360px
+                font-size: 18px
+                font-weight: 500
+                text-align: left
+                p
+                    margin-top: 10px
+                    a
+                        text-decoration: none
+                        color: $black
+                        &:hover
+                            color: $blue2
+                .email
+                    font-size: 15px
+            .editSupplier
+                float: right
+                .editSupplierButton
+                    color: $blue2
+                    background-color: $white
+                    text-decoration: none
+                    font-size: 18px
+                    border: 1px solid $black
+                    padding: 5px
+                    &:hover
+                        color: $white
+                        border-color: $blue1
+                        background-color: $blue1
+                        cursor: pointer
+                        -webkit-transition: all 0.2s ease-in-out
+                        -moz-transition: all 0.2s ease-in-out
+                        -ms-transition: all 0.2s ease-in-out
+                        -o-transition: all 0.2s ease-in-out
+                        transition: all 0.2s ease-in-out            
+    
+    #addSupplierBG
+        position: fixed
+        left: 0
+        top: 0
+        background-color: rgba(0,0,0,0.9)
+        width: 100%
+        height: 100%
+        display: none
+    #addSupplier
+        position: fixed
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        background-color: $white
+        box-sizing: border-box
+        width: 800px
+        height: 320px
+        border: 4px solid $blue1
+        padding: 20px 40px 20px 40px
+        h2
+            text-align: center
+            font-size: 30px
+            margin-bottom: 30px
+        form
+            text-align: right
+            label
+                display: inline-block
+                width: 200px
+                font-size: 25px
+            input
+                display: inline-block
+                margin: 0 100px 10px 10px
+                width: 300px
+                font-size: 20px
+                border: 2px solid $black
+                padding: 3px
+            #submit
+                width: 150px
+                font-size: 25px
+                background-color: $blue2
+                color: $white
+                &:hover
+                    color: $black
+                    background-color: $blue1
+                    cursor: pointer
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+
+    #hideAddSupplier
+        position: fixed
+        top: 150px
+        right: 10%
+        font-size: 25px
+        font-weight: 800
+        color: $white
+        border: none
+        background: none
+        &:hover
+            cursor: pointer
+            color: $blue1
+            -webkit-transition: all 0.2s ease-in-out
+            -moz-transition: all 0.2s ease-in-out
+            -ms-transition: all 0.2s ease-in-out
+            -o-transition: all 0.2s ease-in-out
+            transition: all 0.2s ease-in-out
+        
+    // editSupplier.html specific
+    
+    #addStockBG
+        position: fixed
+        top: 0
+        left: 0
+        background-color: rgba(0,0,0,0.9)
+        width: 100%
+        height: 100%
+        display: none
+    #addStock
+        position: fixed
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        background-color: $white
+        box-sizing: border-box
+        width: 650px
+        height: 320px
+        border: 4px solid $black
+        padding: 20px 40px 20px 40px
+        h2
+            text-align: center
+            font-size: 30px
+            margin-bottom: 30px
+        form
+            text-align: right
+            label
+                display: inline-block
+                width: 150px
+                font-size: 20px
+            input
+                display: inline-block
+                margin: 0 100px 10px 10px
+                width: 250px
+                font-size: 20px
+                border: 2px solid $black
+                padding: 3px
+            #submit
+                width: 100px
+                font-size: 20px
+                background-color: $white
+                color: $black
+                &:hover
+                    color: $blue2
+                    background-color: $blue1
+                    cursor: pointer
+                    border-color: $blue2
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+        
+    
+    #deleteButton
+        float: right
+        margin: 2px 25px 0 5px
+        
+        button
+            border: 2px solid $black
+            background: none
+            font-size: 18px
+            font-weight: 500
+            padding: 8px
+            &:hover
+                color: $white
+                background-color: $black
+                cursor: pointer
+                -webkit-transition: all 0.2s ease-in-out
+                -moz-transition: all 0.2s ease-in-out
+                -ms-transition: all 0.2s ease-in-out
+                -o-transition: all 0.2s ease-in-out
+                transition: all 0.2s ease-in-out
+    #confirmBG
+        position: fixed
+        top: 0
+        left: 0
+        background-color: rgba(0,0,0,0.9)
+        width: 100%
+        height: 100%
+        display: none
+        
+    #confirm
+        position: fixed
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        background-color: $blue2
+        box-sizing: border-box
+        width: 650px
+        height: 240px
+        border: 4px solid $white
+        padding: 20px 40px 20px 40px
+        text-align: center
+        h2
+            font-size: 32px
+            color: $white
+            font-weight: 300
+            margin-bottom: 20px
+        button  
+            background-color: $white
+            color: $black
+            font-size: 28px
+            font-weight: 600
+            border: 4px solid $black
+            padding: 20px 30px 20px 30px
+            margin: 10px 15px 0 15px
+            &:hover
+                color: $white
+                background-color: $blue2
+                cursor: pointer
+                border-color: $white
+                -webkit-transition: all 0.2s ease-in-out
+                -moz-transition: all 0.2s ease-in-out
+                -ms-transition: all 0.2s ease-in-out
+                -o-transition: all 0.2s ease-in-out
+                transition: all 0.2s ease-in-out
+    
+    #editSupplierForm
+        text-align: center
+        width: 700px
+        margin: 44px auto 0px auto
+        form
+            text-align: right
+            label
+                display: inline
+                font-size: 30px
+                padding: 15px 10px 15px 10px
+            input
+                display: inline
+                font-size: 25px
+                margin: 5px 0 5px 0
+                padding: 5px
+                width: 420px
+            #save
+                width: 150px
+                font-size: 20px
+                background-color: $white
+                border: 2px solid $black
+                color: $black
+                padding: 5px
+                &:hover
+                    cursor: pointer
+                    color: $white
+                    background-color: $blue2
+                    border-color: $blue2
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+                
+    #editSupplierTable
+        margin: 25px 20px 15px 20px
+        h1
+            font-size: 35px
+            font-weight: 600
+            width: 100%
+            border-bottom: 1px solid $black
+        table
+            width: 95%
+            margin: 25px 5% 0 5%
+            th
+                font-size: 20px
+                background-color: $blue1
+                text-align: left
+                color: $white
+                padding: 15px 5px 15px 5px
+                border: 1px solid $black
+            td
+                font-size: 18px
+                padding: 10px 5px 10px 5px
+                border: 1px solid $black
+            .edit
+                border: none
+                width: 50px
+                text-align: center
+                button
+                    color: $black
+                    border: 2px solid $black
+                    background: none
+                    padding: 2px 5px 2px 5px
+                    text-decoration: none
+                    font-size: 15px
+                    font-weight: 500
+                    &:hover
+                        color: $white
+                        background-color: $black
+                        cursor: pointer
+                        -webkit-transition: all 0.2s ease-in-out
+                        -moz-transition: all 0.2s ease-in-out
+                        -ms-transition: all 0.2s ease-in-out
+                        -o-transition: all 0.2s ease-in-out
+                        transition: all 0.2s ease-in-out
+                    
+                
+    #addStockButton
+        float: right
+        padding: 5px 10px 2px 10px
+        font-size: 20px
+        font-weight: 600
+        background-color: $white
+        border: 0px solid $white
+        &:hover
+            color: $blue1
+            cursor: pointer
+            -webkit-transition: all 0.2s ease-in-out
+            -moz-transition: all 0.2s ease-in-out
+            -ms-transition: all 0.2s ease-in-out
+            -o-transition: all 0.2s ease-in-out
+            transition: all 0.2s ease-in-out
+            
+    #hideAddStock
+        position: fixed
+        top: 250px
+        right: 12%
+        font-size: 25px
+        font-weight: 800
+        color: $white
+        border: none
+        background: none
+        &:hover
+            cursor: pointer
+            color: $blue1
+            -webkit-transition: all 0.2s ease-in-out
+            -moz-transition: all 0.2s ease-in-out
+            -ms-transition: all 0.2s ease-in-out
+            -o-transition: all 0.2s ease-in-out
+            transition: all 0.2s ease-in-out
+
+    //editStock.html specific
+    
+    #itemDetails
+        text-align: center
+        margin-top: 10px
+        h1
+            font-size: 50px
+    
+    #editStockForm
+        text-align: center
+        width: 700px
+        margin: 30px auto 20px auto
+        color: $white
+        background-color: $blue2
+        padding: 40px 30px 20px 0
+        form
+            text-align: right
+            label
+                display: inline
+                font-size: 30px
+                padding: 15px 10px 15px 10px
+            input
+                display: inline
+                font-size: 25px
+                margin: 5px 0 5px 0
+                padding: 5px
+                width: 420px
+            #submit
+                width: 100px
+                background-color: $white
+                border: 2px solid $blue2
+                font-weight: 500
+                &:hover
+                    cursor: pointer
+                    color: $white
+                    background-color: $blue2
+                    border-color: $white
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+                
+    
+    // Stock.html specific
+    
+    #stockContainer
+        padding: 25px
+        h3
+            font-size: 30px
+            padding: 15px 0 15px 0
+            &:hover
+                cursor: pointer
+                color: $blue2
+                text-decoration: underline
+                -webkit-transition: all 0.2s ease-in-out
+                -moz-transition: all 0.2s ease-in-out
+                -ms-transition: all 0.2s ease-in-out
+                -o-transition: all 0.2s ease-in-out
+                transition: all 0.2s ease-in-out
+            span
+                font-size: 0.8em
+                
+        .supplier
+            padding: -2px 3px 15px 3px
+            border: 2px solid $black
+            .item
+                text-align: center
+                h1
+                    display: inline
+                    font-size: 20px
+                form
+                    font-size: 17px
+                    width: 100%
+                    padding: 15px 0 15px 0
+                    border-top: 1px solid $black
+                    input
+                        width: 40px
+                        font-size: 20px
+                        border: 1px solid $black
+                        color: $black
+                        padding: 2px
+                        margin-right: 5px
+                    .radioLabel
+                        font-size: 15px
+                        font-weight: 600
+                        cursor: pointer
+                    .radio
+                        width: 25px
+                        display: inline
+                        cursor: pointer
+                        padding: 0
+         
+                    .submit
+                        display: inline
+                        width: 60px
+                        background-color: $white
+                        border: 2px solid $black
+                        padding: 5px 10px 5px 10px
+                        margin: 5px
+                        font-size: 15px
+                        font-weight: 600
+                        &:hover
+                            cursor: pointer
+                    label
+                        margin-left: 5px
+                    .radioLabel
+                        margin-left: 5px
+        //Footer
+
+#fullFooter
+    position: fixed
+    bottom: 0px
+    left: 0px
+    width: 100%
+    padding: 10px 0 10px 0
+    background-color: $white
+    text-align: center
+    border-top: 2px solid $black
+    h1
+        display: inline
+        font-weight: 400
+        margin: 0 160px 0 160px
+    h2
+        display: inline
+        font-weight: 200
+        
+
+        
+    
+            
+// *************************************************************************************************
+// *************************************************************************************************
+// ***-------------------------------------------------------------------------------------------***
+// ***-------------------------------------------------------------------------------------------***
+// ***-----------------------------------MOBILE & TABLET VERSION---------------------------------***
+// ***-------------------------------------------------------------------------------------------***
+// ***-------------------------------------------------------------------------------------------***
+// *************************************************************************************************
+// *************************************************************************************************
+    
+@media screen and (max-width: 1023px)
+    
+    #header
+        position: fixed
+        top: 0px
+        left: 0px
+        width: 100%
+        height: 110px
+        background-color: $blue1
+        background-image: url("webfiles/headBG.png")
+        padding: 5px 0 0 10px
+        border-bottom: 3px solid $black
+        box-sizing: border-box
+        text-align: center
+        h1
+            color: $white
+            font-size: 40px
+            font-weight: 800
+            padding-left: 5px
+            text-shadow: 1px 1px 0 $black
+            margin-bottom: 22px
+        h2
+            display: none
+        a
+            padding: 8px 10px 8px 10px
+            border: 1px solid $black
+            border-radius: 20px
+            background-color: $white
+            text-decoration: none
+            font-weight: 500
+            font-size: 15px
+            color: $black
+            &:hover
+                color: $white
+                border-color: $white
+                background-color: $blue1
+                -webkit-transition: all 0.5s ease-in-out
+                -moz-transition: all 0.5s ease-in-out
+                -ms-transition: all 0.5s ease-in-out
+                -o-transition: all 0.5s ease-in-out
+                transition: all 0.5s ease-in-out
+    
+            
+    // index.html specific
+    #loginMain
+        width: 100%
+        font-size: 40px
+        font-weight: 800
+        text-align: center
+        background-color: $white
+        margin-top: 50px
+        span
+            font-size: 35px
+            
+    #loginForm
+        color: $black
+        font-weight: 400
+        text-align: center
+        form
+            margin-top: 25px
+        label
+            font-size: 25px
+        input
+            display: block
+            padding: 10px
+            margin: 5px auto 0px auto
+            font-size: 20px
+            font-family: 'Poppins', sans-serif
+            font-weight: 500
+            width: 70%
+            border: 2px solid $black
+        .submit
+            width: 150px
+            font-size: 20px
+            padding: 20px
+            color: $white
+            background-color: $blue1
+            &:hover
+                cursor: pointer
+                background-color: $white
+                color: $blue1
+                -webkit-transition: all 0.3s ease-in-out
+                -moz-transition: all 0.3s ease-in-out
+                -ms-transition: all 0.3s ease-in-out
+                -o-transition: all 0.3s ease-in-out
+                transition: all 0.3s ease-in-out
+            
+            
+    // dashboard specific
+    #dashboardMain
+        width: 100%
+        margin-top: 130px
+        text-align: center
+        text-decoration: none
+        
+    #welcomeMessage
+        color: $black
+        font-size: 25px
+        padding: 10px
+        
+    #dashboardLinks
+        margin-top: 30px
+        width: 100%
+        .dashIconContainer
+            display: block
+            a
+                text-decoration: none
+        .dashIcon
+            border: 4px solid $black
+            border-radius: 30px
+            background-color: $white
+            width: 45%
+            padding: 20px 15px 20px 15px
+            margin: 15px auto 15px auto
+            font-size: 20px
+            font-weight: 600
+            color: $black
+            &:hover
+                color: $white
+                background-color: $blue1
+                border-color: $blue1
+                -webkit-transition: all 0.4s ease-in-out
+                -moz-transition: all 0.4s ease-in-out
+                -ms-transition: all 0.4s ease-in-out
+                -o-transition: all 0.4s ease-in-out
+                transition: all 0.4s ease-in-out
+            img
+                width: 80px
+                
+    // orders.html specific        
+    #ordersTable
+        text-align: center
+        width: 99%
+        margin: 125px auto 25px auto
+        th
+            font-size: 13px
+            font-weight: 500
+            padding: 10px 2px 10px 2px
+            border: 1px solid $black
+            background-color: $blue2
+            color: $white
+        td
+            font-size: 12px
+            padding: 8px 1px 8px 1px
+            border: 1px solid $black
+        .view
+            border: none
+            text-align: left
+            a
+                text-decoration: none
+                font-size: 15px
+                font-weight: 400
+                padding: 3px 5px 3px 5px
+                margin-left: 1px
+                color: $black
+                border: 1px solid $black
+                &:hover
+                    color: $blue2
+                    border-color: $blue2
+                    background-color: $blue1
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+            
+    
+    // Supplier.php specific
+    
+    #addSupplierButton
+        margin: 120px 0 0 50px
+        background: none
+        font-size: 18px
+        font-weight: 600
+        padding: 4px
+        border: 2px solid $white
+        &:hover
+            cursor: pointer
+            color: $blue2
+            -webkit-transition: all 0.2s ease-in-out
+            -moz-transition: all 0.2s ease-in-out
+            -ms-transition: all 0.2s ease-in-out
+            -o-transition: all 0.2s ease-in-out
+            transition: all 0.2s ease-in-out
+    
+    #supplierContainer
+        text-align: center
+        padding-top: 10px 
+        .supplier
+            width: 375px
+            display: inline-block
+            box-sizing: border-box
+            border: 2px solid $black
+            background-color: $blue2
+            padding: 20px
+            margin: 0 20px 20px 20px
+            color: $white
+            .supplierID
+                float: right
+                font-weight: 700                
+            h1
+                text-align: left
+                font-size: 25px
+                font-weight: 600
+                margin-bottom: 3px
+            h2
+                text-align: left
+                font-size: 15px
+                font-weight: 300
+        
+            .contactContainer
+                width: 360px
+                font-size: 14px
+                font-weight: 500
+                text-align: left
+                p
+                    margin-top: 10px
+                    a
+                        text-decoration: none
+                        color: $white
+                        &:hover
+                            color: $blue2
+                .email
+                    font-size: 11px
+            .editSupplier
+                float: right
+                .editSupplierButton
+                    color: $white
+                    background-color: $blue2
+                    text-decoration: none
+                    font-size: 15px
+                    border: 1px solid $white
+                    padding: 6px
+                    &:hover
+                        border-color: $blue1
+                        background-color: $blue1
+                        cursor: pointer
+                        -webkit-transition: all 0.2s ease-in-out
+                        -moz-transition: all 0.2s ease-in-out
+                        -ms-transition: all 0.2s ease-in-out
+                        -o-transition: all 0.2s ease-in-out
+                        transition: all 0.2s ease-in-out            
+    
+    #addSupplierBG
+        position: fixed
+        left: 0
+        top: 0
+        background-color: $blue2
+        color: $white
+        width: 100%
+        height: 100%
+        display: none
+    #addSupplier
+        width: 80%
+        margin: 60px auto 0 auto
+        h2
+            text-align: center
+            font-size: 20px
+            margin-bottom: 30px
+            font-weight: 300
+        form
+            text-align: left
+            width: 100%
+            label
+                font-size: 17px
+                padding-bottom: 5px
+            input
+                margin: 0 100px 10px 10px
+                width: 100%
+                font-size: 20px
+                border: 2px solid $black
+                padding: 3px
+                box-sizing: border-box
+            #submit
+                font-size: 20px
+                width: 100px
+                margin-top: 20px
+                margin-left: 5px
+                background-color: $blue2
+                border-color: $white
+                color: $white
+                padding: 5px
+                &:hover
+                    color: $black
+                    background-color: $blue1
+                    cursor: pointer
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+
+    #hideAddSupplier
+        position: fixed
+        top: 10px
+        right: 20px
+        font-size: 15px
+        font-weight: 500
+        color: $white
+        border: 1px solid $white
+        background: none
+        padding: 5px
+        &:hover
+            cursor: pointer
+            color: $blue1
+            border-color: $blue1
+            -webkit-transition: all 0.2s ease-in-out
+            -moz-transition: all 0.2s ease-in-out
+            -ms-transition: all 0.2s ease-in-out
+            -o-transition: all 0.2s ease-in-out
+            transition: all 0.2s ease-in-out
+                
+    
+    // Stock.html specific
+    
+    #stockContainer
+        margin-top: 110px
+        h3
+            font-size: 25px
+            padding: 20px 0 20px 0
+            &:hover
+                cursor: pointer
+                color: $blue2
+                text-decoration: underline
+                -webkit-transition: all 0.2s ease-in-out
+                -moz-transition: all 0.2s ease-in-out
+                -ms-transition: all 0.2s ease-in-out
+                -o-transition: all 0.2s ease-in-out
+                transition: all 0.2s ease-in-out
+            span
+                font-size: 0.8em
+                
+        .item
+            text-align: center
+            h1
+                display: block
+                font-size: 25px
+                margin-bottom: 10px
+            form
+                font-size: 20px
+                width: 100%
+                padding: 15px 0 15px 0
+                border-top: 1px solid $black
+                text-align: center
+                input
+                    width: 50px
+                    margin: 5px auto 5px auto
+                    display: block
+                    font-size: 15px
+                    border: 1px solid $black
+                    color: $black
+                    padding: 5px
+                .radioLabel
+                    margin-top: 10px
+                    display: block
+                    font-size: 12px
+                    font-weight: 600
+                    cursor: pointer
+                    margin-top: 10px
+                .radio
+                    margin-top: 5px
+                    display: inline
+                    cursor: pointer
+                    padding: 0
+
+                .submit
+                    display: block
+                    width: auto
+                    margin: 10px auto 0 auto
+                    background-color: $white
+                    border: 2px solid $black
+                    padding: 8px 15px 8px 15px
+                    font-size: 20px
+                    font-weight: 600
+                    &:hover
+                        cursor: pointer
+                label
+                    margin-left: 5px
+                .radioLabel
+                    margin-left: 5px
+                    
+    //editSupplier specific
+    // editSupplier.html specific
+    
+    #addStockBG
+        position: fixed
+        top: 0
+        left: 0
+        background-color: $white
+        width: 100%
+        height: 100%
+        display: none
+    #addStock
+        margin-top: 25px
+        background-color: $white
+        box-sizing: border-box
+        width: 100%
+        padding: 20px 40px 20px 40px
+        h2
+            text-align: center
+            font-size: 20px
+            margin-bottom: 20px
+        form
+            text-align: left
+            label
+                font-size: 16px
+            input
+                margin: 0 100px 10px 10px
+                width: 100%
+                font-size: 16px
+                border: 2px solid $black
+                padding: 3px
+                box-sizing: border-box
+            #submit
+                width: 80px
+                font-size: 16px
+                background-color: $blue2
+                color: $white
+                padding: 8px
+                &:hover
+                    color: $blue2
+                    background-color: $blue1
+                    cursor: pointer
+                    border-color: $blue2
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+        
+    
+    #deleteButton
+        margin: 120px 25px 0 5px
+        text-align: center
+        button
+            border: 1px solid $black
+            background: none
+            font-size: 15px
+            font-weight: 600
+            padding: 10px
+            box-sizing: border-box
+            &:hover
+                color: $white
+                background-color: $black
+                cursor: pointer
+                -webkit-transition: all 0.2s ease-in-out
+                -moz-transition: all 0.2s ease-in-out
+                -ms-transition: all 0.2s ease-in-out
+                -o-transition: all 0.2s ease-in-out
+                transition: all 0.2s ease-in-out
+    #confirmBG
+        position: fixed
+        top: 0
+        left: 0
+        background-color: rgba(0,0,0,0.9)
+        width: 100%
+        height: 100%
+        display: none
+        
+    #confirm
+        background-color: $blue2
+        box-sizing: border-box
+        width: 100%
+        padding: 20px 40px 20px 40px
+        text-align: center
+        h2
+            font-size: 25px
+            color: $white
+            font-weight: 300
+            margin-bottom: 15px
+        button  
+            background-color: $white
+            color: $black
+            font-size: 20px
+            font-weight: 600
+            border: 4px solid $black
+            padding: 20px 30px 20px 30px
+            margin: 10px 15px 0 15px
+            &:hover
+                color: $white
+                background-color: $blue2
+                cursor: pointer
+                border-color: $white
+                -webkit-transition: all 0.2s ease-in-out
+                -moz-transition: all 0.2s ease-in-out
+                -ms-transition: all 0.2s ease-in-out
+                -o-transition: all 0.2s ease-in-out
+                transition: all 0.2s ease-in-out
+    
+    #editSupplierForm
+        text-align: center
+        width: 350px
+        margin: 20px auto 0px auto
+        form
+            text-align: left
+            width: 100%
+            label
+                display: inline
+                font-size: 15px
+                padding: 15px 10px 15px 10px
+            input
+                display: inline
+                font-size: 15px
+                margin: 5px 0 5px 0
+                padding: 5px
+                width: 350px
+            #save
+                display: block
+                width: 100px
+                margin-top: 10px
+                font-size: 15px
+                background-color: $white
+                border: 1px solid $black
+                color: $black
+                padding: 5px
+                &:hover
+                    cursor: pointer
+                    color: $white
+                    background-color: $blue2
+                    border-color: $blue2
+                    -webkit-transition: all 0.2s ease-in-out
+                    -moz-transition: all 0.2s ease-in-out
+                    -ms-transition: all 0.2s ease-in-out
+                    -o-transition: all 0.2s ease-in-out
+                    transition: all 0.2s ease-in-out
+                
+    #editSupplierTable
+        margin: 25px 20px 15px 20px
+        h1
+            font-size: 25px
+            font-weight: 600
+            width: 100%
+            border-bottom: 1px solid $black
+        table
+            width: 95%
+            margin: 25px 5% 0 5%
+            th
+                font-size: 14px
+                background-color: $blue1
+                text-align: left
+                color: $white
+                padding: 15px 5px 15px 5px
+                border: 1px solid $black
+            td
+                font-size: 12px
+                padding: 10px 5px 10px 5px
+                border: 1px solid $black
+            .edit
+                border: none
+                width: 30px
+                text-align: center
+                button
+                    color: $black
+                    border: 2px solid $black
+                    background: none
+                    padding: 5px 5px 5px 5px
+                    text-decoration: none
+                    font-size: 10px
+                    font-weight: 500
+                    &:hover
+                        color: $white
+                        background-color: $black
+                        cursor: pointer
+                        -webkit-transition: all 0.2s ease-in-out
+                        -moz-transition: all 0.2s ease-in-out
+                        -ms-transition: all 0.2s ease-in-out
+                        -o-transition: all 0.2s ease-in-out
+                        transition: all 0.2s ease-in-out
+                    
+                
+    #addStockButton
+        float: right
+        padding: 5px 10px 2px 10px
+        font-size: 15px
+        font-weight: 600
+        background-color: $white
+        border: 0px solid $white
+        &:hover
+            color: $blue1
+            cursor: pointer
+            -webkit-transition: all 0.2s ease-in-out
+            -moz-transition: all 0.2s ease-in-out
+            -ms-transition: all 0.2s ease-in-out
+            -o-transition: all 0.2s ease-in-out
+            transition: all 0.2s ease-in-out
+            
+    #hideAddStock
+        position: fixed
+        top: 20px
+        right: 20px
+        font-size: 20px
+        font-weight: 800
+        color: $black
+        border: none
+        background: none
+        &:hover
+            cursor: pointer
+            color: $blue1
+            -webkit-transition: all 0.2s ease-in-out
+            -moz-transition: all 0.2s ease-in-out
+            -ms-transition: all 0.2s ease-in-out
+            -o-transition: all 0.2s ease-in-out
+            transition: all 0.2s ease-in-out
+        
+    //Footer
+                        
+    #fullFooter
+        display: none
+    
