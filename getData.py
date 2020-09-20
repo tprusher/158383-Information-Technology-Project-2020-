@@ -14,7 +14,7 @@ connection = pymysql.connect(
 cur = connection.cursor()
 
 def get_data(TableName):
-    sql = """select * from order_detail where OrderID = 107;"""
+    sql = """select * from order_detail where OrderID = 137;"""
 
     table_data = pd.read_sql(sql, con=connection)   
     #write_to_excel(table_data)

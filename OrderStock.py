@@ -84,6 +84,10 @@ def insert_order_data(data):
         print(insert_sql)
         cur.execute(insert_sql)
         connection.commit()
+        
+    read_table = 'SELECT * FROM order_detail where OrderID=%s'%(order_id)
+    z = pd.read_sql(read_table, con=connection) 
+    print("ABC ::", z)
 
     return order_id
     

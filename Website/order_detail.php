@@ -49,9 +49,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- **********************Google Fonts********************************* -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+
+    
     <?php 
         if (isset($_GET['orderFilterID'])) {
-            echo $_GET['orderFilterID'];
+            //echo $_GET['orderFilterID'];
             $z = $_GET['orderFilterID'];
         } else {
             echo '** ERROR **';
@@ -134,9 +136,48 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </tbody>
         </table>
         <?php endif; ?>
-        <a href="<?php echo '/approveOrder.php?orderFilterID='.$row['OrderID'] ?>"> <button class="button button1"> Approve </button></a>
-        <a href="<?php echo '/editOrder.php?orderFilterID='.$row['OrderID'] ?>">    <button class="button button2"> Edit </button></a>
-        <a href="<?php echo '/orders.php' ?>">    <button class="button button3"> Back </button></a>
+        <a href="<?php echo '/approveOrder.php?orderFilterID='.$row['OrderID'] ?>"> 
+            <button class="button button1"
+                id = '<?php 
+                            if ($row['Status'] === 'Approved') {
+                                echo 'HIDE_TRUE';
+                            } else {
+                                echo "HIDE_FALSE";
+                            }
+                        ?>'>
+                 Approve </button>
+                </a>
+                
+        <a href="<?php echo '/editOrder.php?orderFilterID='.$row['OrderID'] ?>">    
+            <button class="button button2" id = '<?php 
+                            if ($row['Status'] === 'Approved') {
+                                echo 'HIDE_TRUE';
+                            } else {
+                                echo "HIDE_FALSE";
+                            }
+                        ?>'>  
+                
+            Edit </button>
+        </a>
+        
+        
+        <!-- <a href="<?php echo '/deleteOrder.php?orderFilterID='.$row['OrderID'] ?>">  <button class="button button3"> Delete </button></a> -->
+
+        <a href="<?php echo '/deleteOrder.php?orderFilterID='.$row['OrderID'] ?>" onclick="return confirm('Are you sure you want to delete this order?');">
+            <button class="button button3" id = '<?php 
+                            if ($row['Status'] === 'Approved') {
+                                echo 'HIDE_TRUE';
+                            } else {
+                                echo "HIDE_FALSE";
+                            }
+                        ?>'> 
+                        Delete 
+            </button>
+        </a>
+
+        <a href="<?php echo '/orders.php' ?>">    <button class="button button4"> Back </button></a>
+
+
     </div>
 
     <div id="footer">
@@ -160,15 +201,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     .button1 {background-color: green;} /* Green */
     .button2 {background-color: orange;} /* Blue */
-    .button3 {background-color: grey;} /* Blue */
+    .button3 {background-color: black;} /* Blue */
+    .button4 {background-color: grey;} /* Blue */
 
     #TRUE { 
     background-color: rgba(0, 255, 0, 0.2);
     }  /* green with opacity */
 
-
 #FALSE { 
     background-color:  rgba(253, 227, 167, 0.4);  /* red with opacity */
+    /* display:none; */
+}
+#HIDE_TRUE {
+    display:none;
 }
 
 </style>
