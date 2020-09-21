@@ -26,31 +26,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username = trim($_POST["username"]);
     }
 
-    // Check user is in the DB
-    // if (isset($_POST['username'])) 
-    // {
-    //     $username = mysql_real_escape_string($_POST['username']);
-
-    //     if (!empty($username)) 
-    // {
-    //         $username_query = mysql_query("SELECT *
-    //                                        FROM user_list
-    //                                        WHERE username = '$username'");
-    //          $count=mysql_num_rows( $username_query);
-    //          if($count==0)
-    //          {
-    //            echo "Username doesn't exist";
-    //            $user_err = 'TRUE';
-    //            exit;
-    //          }
-    //         else
-    //         {
-    //           echo "Username already exists";
-    //           exit;
-    //        }
-    //    }
-    // }
-
 
     // Validate new password
     if(empty(trim($_POST["new_password"]))){

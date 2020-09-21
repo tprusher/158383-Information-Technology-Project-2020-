@@ -103,7 +103,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     $SupplierID = $_POST["SupplierID"];
     
     $GETsql1 = "SELECT * FROM supplier WHERE SupplierID = $SupplierID";
-    $GETsql2 = "SELECT stock.ItemID, stock.Name, stock.Price, stock.ShelfLife, stock.SupplierID, stock.SupplierSKU FROM stock join supplier on stock.SupplierID = supplier.SupplierID WHERE stock.SupplierID = $SupplierID";
+    $GETsql2 = "SELECT stock.ItemID, stock.ProductName, stock.Price, stock.ShelfLife, stock.SupplierID, stock.SupplierSKU FROM stock join supplier on stock.SupplierID = supplier.SupplierID WHERE stock.SupplierID = $SupplierID";
     
     $result1 = $link->query($GETsql1);
     $result2 = $link->query($GETsql2);
@@ -219,18 +219,21 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             <th>Shelf Life</th>
                             <th>Supplier ID</th>
                             <th>Supplier SKU</th>
+                            <th>Edit </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($result2 as $row2): array_map('htmlentities', $row); ?>
                         <tr>
                             <td><?php echo implode('</td><td>', $row2); ?></td>
-                            <td class="edit"><form action="editStock.php" method="post">
-                                <button type="submit" name="editStock">
-                                Edit
-                                </button>
-                                <input type="hidden" id="hiddenSupplierID" name="SupplierID" value="<?php echo $row2["ItemID"]; ?>">
-                                </form></td>
+                            <td >
+                            <!-- <form action="editStock.php" method="post"> -->
+
+                            <a href=<?php echo '/editStock.php?mySupplierID='.$row2['SupplierID'].'&myStockID='.$row2['ItemID']
+
+                             ?>> EDIT 
+                             </a></td> 
+
                         </tr>
                         <?php endforeach; ?>
                         <?php endif; ?>

@@ -1,6 +1,10 @@
+
+
 import pymysql
 import openpyxl
 import pandas as pd
+
+
 
 
 connection = pymysql.connect(
@@ -13,8 +17,25 @@ connection = pymysql.connect(
 
 cur = connection.cursor()
 
+
+
+
+sql = """
+
+UPDATE stock SET ProductName = 'FANTA 1.0', Price = 123 , ShelfLife = 456, SupplierSKU = 789 WHERE ItemID = 10 
+"""
+
+
+cur.execute(sql)
+connection.commit()
+
+
+
+
+
+
 def get_data(TableName):
-    sql = """select * from stock;"""
+    sql = """select * from stock WHERE ItemID = 10;"""
 
     table_data = pd.read_sql(sql, con=connection)   
     #write_to_excel(table_data)

@@ -1,4 +1,5 @@
 
+
 <?php
 
 // Initialize the session
@@ -9,32 +10,52 @@
 
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
+    header("location: login.php");
     exit;
 }
 ?>
 
 
+<!DOCTYPE HTML>
+
+
+<html>
+
+<!-- ##############################################     HEAD ELEMENT      ############################################################## -->
+
+<head>
+
+</head>
+
+<body>
+
+<h1> UPDATE SCRIPT </h1>
+<p>
+    <?php 
+    echo 
+    $supplierIdFilter = $_GET["supplierFilter"];
+    $stockIdFilter = $_GET["itemFilter"];
+    $item_name = $_GET["itemName"];
+    $item_price = $_GET["Price"];
+    $item_life = $_GET["shelfLife"];
+    $item_supplSKU = $_GET["supplierSKU"];
+    ?>
+</p>
+
+
 <?php
 
-    //Set variables from POST data
-    $Name = $_POST["item-name"];
-    $Price = $_POST["price"];
-    $ShelfLife = $_POST["shelfLife"];
-    $SupplierSKU = $_POST["SupplierSKU"];
-    $SupplierID = $_POST["SupplierID"];
-?> 
+    // UPDATE stock SET ProductName = 'FANTA 1.0', Price = 123 , ShelfLife = 456, SupplierSKU = 789 WHERE ItemID = 10 
 
-<?php
 
     // Check input errors before updating the database
     if(empty($new_password_err) && empty($confirm_password_err)){
         // Prepare an update statement
-        $sql = "INSERT INTO stock(ProductName, Price, ShelfLife, SupplierID, SupplierSKU) VALUES (?,?,?,?,?)";
+        $sql = "UPDATE stock SET ProductName = ?, Price = ?, ShelfLife = ?, SupplierSKU = ? WHERE ItemID = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "siiii", $Name, $Price, $ShelfLife, $SupplierID, $SupplierSKU);
+            mysqli_stmt_bind_param($stmt, "siiii", $item_name, $item_price, $item_life, $item_supplSKU,  $stockIdFilter);
              
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -55,3 +76,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     mysqli_close($link);
 
 ?>
+
+
+
+</body>
+</html>
+
